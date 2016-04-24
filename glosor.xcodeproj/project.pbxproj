@@ -31,7 +31,6 @@
 		8775D2441CCA1417006FB861 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8775D2431CCA1417006FB861 /* AVFoundation.framework */; };
 		87F140711CCAA4EE0097AA85 /* mySound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87F140701CCAA4EE0097AA85 /* mySound.wav */; };
 		87F140751CCB41F40097AA85 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F140741CCB41F40097AA85 /* SettingsViewController.swift */; };
-		87F634AF1CBF91C800DAE187 /* CreateJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F634AE1CBF91C800DAE187 /* CreateJson.swift */; };
 		87F85FA11CAAC7DF007F4EBF /* SynonimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */; };
 		87F85FA31CAAE4F9007F4EBF /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +74,6 @@
 		8775D2431CCA1417006FB861 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		87F140701CCAA4EE0097AA85 /* mySound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mySound.wav; sourceTree = "<group>"; };
 		87F140741CCB41F40097AA85 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
-		87F634AE1CBF91C800DAE187 /* CreateJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateJson.swift; sourceTree = "<group>"; };
 		87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynonimViewController.swift; sourceTree = "<group>"; };
 		87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; tabWidth = 3; wrapsLines = 1; };
 /* End PBXFileReference section */
@@ -131,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				874F211C1CB2836A0020987F /* Main.storyboard */,
-				87F634AE1CBF91C800DAE187 /* CreateJson.swift */,
-				1F60E3921C91823200E5A8A4 /* AppDelegate.swift */,
+				878ED2311CCD34DA00109D2A /* Settings */,
+				878ED2301CCD347600109D2A /* AppDelegate */,
 				87F140761CCB43BD0097AA85 /* LoadningsScrren */,
 				8775D2481CCA2740006FB861 /* Data Model */,
 				1FCC37151C9AE69A00C9083F /* All List */,
@@ -240,12 +238,27 @@
 			name = EditList;
 			sourceTree = "<group>";
 		};
+		878ED2301CCD347600109D2A /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				1F60E3921C91823200E5A8A4 /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		878ED2311CCD34DA00109D2A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				87F140741CCB41F40097AA85 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		87F140761CCB43BD0097AA85 /* LoadningsScrren */ = {
 			isa = PBXGroup;
 			children = (
 				87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */,
 				8748503F1CAC6D6C009267C3 /* AboutViewController.swift */,
-				87F140741CCB41F40097AA85 /* SettingsViewController.swift */,
 			);
 			name = LoadningsScrren;
 			sourceTree = "<group>";
@@ -368,7 +381,6 @@
 				1F60E3B31C91833600E5A8A4 /* ListViewController.swift in Sources */,
 				1FF77D6E1CA59A7D00F6BE2C /* CustomCellQuizTestMixedTableViewCell.swift in Sources */,
 				876D9CF31CA71AE500555AC8 /* EditListViewController.swift in Sources */,
-				87F634AF1CBF91C800DAE187 /* CreateJson.swift in Sources */,
 				1FF77D661CA593D800F6BE2C /* QuizTest21ViewController.swift in Sources */,
 				1FCC36DE1C95E12400C9083F /* Lista.swift in Sources */,
 				1F3808211CA27E230018BBC5 /* QuizTestType12ViewController.swift in Sources */,
