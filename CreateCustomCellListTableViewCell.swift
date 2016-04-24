@@ -11,7 +11,7 @@ import UIKit
 class CreateCustomCellListTableViewCell: UITableViewCell {
     
     
-    //custom cell elements:
+    //:MARK ELEMENTS
     @IBOutlet weak var LabelLanguage1: UILabel!
     
     @IBOutlet weak var LabelWord1: UILabel!
@@ -24,6 +24,10 @@ class CreateCustomCellListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        LabelLanguage1.textColor = UIColor.blackColor()
+        LabelLanguage2.textColor = UIColor.blackColor()
+        LabelWord1.textColor = UIColor.blackColor()
+        LabelWord2.textColor = UIColor.blackColor()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

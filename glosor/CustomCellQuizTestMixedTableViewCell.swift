@@ -11,30 +11,33 @@ import UIKit
 class CustomCellQuizTestMixedTableViewCell: UITableViewCell , UITextFieldDelegate {
     
     //elements:
-
-   
-    @IBOutlet weak var WordToTranslate: UITextField!
+   @IBOutlet weak var WordToTranslate: UITextField!
     
    @IBOutlet weak var TheTranslatedWord: UITextField!
   
+   @IBOutlet weak var ImageToShowResults: UIImageView!
     
-    @IBOutlet weak var ImageToShowResults: UIImageView!
+    
  
    override func awakeFromNib() {
         super.awakeFromNib()
+        ImageToShowResults.backgroundColor = UIColor(patternImage: UIImage(named: "checkMark.png")!)
+        ImageToShowResults.hidden = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.WordToTranslate.delegate = self
         self.TheTranslatedWord.delegate = self
+        WordToTranslate.textColor = UIColor.blackColor()
+        TheTranslatedWord.textColor = UIColor.blackColor()
+        TheTranslatedWord.placeholder = "ditt svar"
     }
-    
 
-    //--- gömmer tagentbordet----
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         WordToTranslate.resignFirstResponder()
         TheTranslatedWord.resignFirstResponder()
+        
         return true
     }
 

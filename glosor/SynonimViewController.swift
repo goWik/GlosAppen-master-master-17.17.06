@@ -14,18 +14,19 @@ import UIKit
 
 class SynonimViewController: UIViewController {
     
-    //elements:
+    //:MARK ELEMENTS
     @IBOutlet weak var WebView: UIWebView!
   
     @IBOutlet weak var VCTitle: UINavigationItem!
+    
+    
    
- 
     var synonimWord:String?//ordet som ska sökas efter
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "synonim"
+        title = "synonim \(synonimWord!)"
   
         let urlString = "http://www.synonymer.se/?query=\(synonimWord!)"
     
@@ -37,7 +38,6 @@ class SynonimViewController: UIViewController {
                     WebView.loadRequest(request)
                 }
             }
-            //print("ordet som ska sökas: \(synonimWord!))")
         }
     
     

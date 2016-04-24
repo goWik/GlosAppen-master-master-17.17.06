@@ -10,7 +10,6 @@
 		1F3808211CA27E230018BBC5 /* QuizTestType12ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3808201CA27E230018BBC5 /* QuizTestType12ViewController.swift */; };
 		1F3808261CA28CE50018BBC5 /* CustomCellQuizType12TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3808251CA28CE50018BBC5 /* CustomCellQuizType12TableViewCell.swift */; };
 		1F60E3931C91823200E5A8A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60E3921C91823200E5A8A4 /* AppDelegate.swift */; };
-		1F60E3951C91823200E5A8A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60E3941C91823200E5A8A4 /* ViewController.swift */; };
 		1F60E39A1C91823200E5A8A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F60E3991C91823200E5A8A4 /* Assets.xcassets */; };
 		1F60E39D1C91823200E5A8A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F60E39B1C91823200E5A8A4 /* LaunchScreen.storyboard */; };
 		1F60E3A81C91823200E5A8A4 /* glosorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F60E3A71C91823200E5A8A4 /* glosorTests.swift */; };
@@ -29,6 +28,9 @@
 		874F211D1CB2836A0020987F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 874F211C1CB2836A0020987F /* Main.storyboard */; };
 		876D9CF31CA71AE500555AC8 /* EditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876D9CF21CA71AE500555AC8 /* EditListViewController.swift */; };
 		876D9CF51CA71BE600555AC8 /* CustomCellEditListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876D9CF41CA71BE600555AC8 /* CustomCellEditListTableViewCell.swift */; };
+		8775D2441CCA1417006FB861 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8775D2431CCA1417006FB861 /* AVFoundation.framework */; };
+		87F140711CCAA4EE0097AA85 /* mySound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87F140701CCAA4EE0097AA85 /* mySound.wav */; };
+		87F140751CCB41F40097AA85 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F140741CCB41F40097AA85 /* SettingsViewController.swift */; };
 		87F634AF1CBF91C800DAE187 /* CreateJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F634AE1CBF91C800DAE187 /* CreateJson.swift */; };
 		87F85FA11CAAC7DF007F4EBF /* SynonimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */; };
 		87F85FA31CAAE4F9007F4EBF /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */; };
@@ -49,7 +51,6 @@
 		1F3808251CA28CE50018BBC5 /* CustomCellQuizType12TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomCellQuizType12TableViewCell.swift; path = ../CustomCellQuizType12TableViewCell.swift; sourceTree = "<group>"; };
 		1F60E38F1C91823200E5A8A4 /* glosor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = glosor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F60E3921C91823200E5A8A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1F60E3941C91823200E5A8A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F60E3991C91823200E5A8A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F60E39C1C91823200E5A8A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F60E39E1C91823200E5A8A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +72,9 @@
 		874F211C1CB2836A0020987F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		876D9CF21CA71AE500555AC8 /* EditListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListViewController.swift; sourceTree = "<group>"; };
 		876D9CF41CA71BE600555AC8 /* CustomCellEditListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellEditListTableViewCell.swift; sourceTree = "<group>"; };
+		8775D2431CCA1417006FB861 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		87F140701CCAA4EE0097AA85 /* mySound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mySound.wav; sourceTree = "<group>"; };
+		87F140741CCB41F40097AA85 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 		87F634AE1CBF91C800DAE187 /* CreateJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateJson.swift; sourceTree = "<group>"; };
 		87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynonimViewController.swift; sourceTree = "<group>"; };
 		87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; tabWidth = 3; wrapsLines = 1; };
@@ -81,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8775D2441CCA1417006FB861 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +111,7 @@
 		1F60E3861C91823200E5A8A4 = {
 			isa = PBXGroup;
 			children = (
+				8775D2431CCA1417006FB861 /* AVFoundation.framework */,
 				1F60E3911C91823200E5A8A4 /* glosor */,
 				1F60E3A61C91823200E5A8A4 /* glosorTests */,
 				1F60E3901C91823200E5A8A4 /* Products */,
@@ -124,17 +130,16 @@
 		1F60E3911C91823200E5A8A4 /* glosor */ = {
 			isa = PBXGroup;
 			children = (
+				874F211C1CB2836A0020987F /* Main.storyboard */,
 				87F634AE1CBF91C800DAE187 /* CreateJson.swift */,
 				1F60E3921C91823200E5A8A4 /* AppDelegate.swift */,
-				874F211C1CB2836A0020987F /* Main.storyboard */,
-				1F60E3941C91823200E5A8A4 /* ViewController.swift */,
-				87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */,
-				1FCC36DD1C95E12400C9083F /* Lista.swift */,
-				874850431CAD41A8009267C3 /* Popover */,
-				1FCC37151C9AE69A00C9083F /* List */,
+				87F140761CCB43BD0097AA85 /* LoadningsScrren */,
+				8775D2481CCA2740006FB861 /* Data Model */,
+				1FCC37151C9AE69A00C9083F /* All List */,
+				1F7437F51C9D882100F80E44 /* SelectQuizType */,
+				8775D2491CCA596E006FB861 /* Synonimer */,
 				1FCC37111C9A9F4D00C9083F /* CreateList */,
 				877C38931CA8867F005DF952 /* EditList */,
-				1F7437F51C9D882100F80E44 /* SelectQuizType */,
 				1F3808221CA27E340018BBC5 /* QuizTest12 */,
 				1FF77D691CA5980F00F6BE2C /* QuizTest21 */,
 				1FF77D6A1CA5982600F6BE2C /* QuizTestMixed */,
@@ -173,13 +178,14 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		1FCC37151C9AE69A00C9083F /* List */ = {
+		1FCC37151C9AE69A00C9083F /* All List */ = {
 			isa = PBXGroup;
 			children = (
 				1F60E3B41C91834B00E5A8A4 /* CellTableViewCell.swift */,
+				874850411CAC7C9C009267C3 /* HelpViewController.swift */,
 				1F60E3B21C91833600E5A8A4 /* ListViewController.swift */,
 			);
-			name = List;
+			name = "All List";
 			sourceTree = "<group>";
 		};
 		1FF77D691CA5980F00F6BE2C /* QuizTest21 */ = {
@@ -194,20 +200,35 @@
 		1FF77D6A1CA5982600F6BE2C /* QuizTestMixed */ = {
 			isa = PBXGroup;
 			children = (
-				1FF77D671CA5948E00F6BE2C /* QuizTestMixedViewController.swift */,
 				1FF77D6D1CA59A7D00F6BE2C /* CustomCellQuizTestMixedTableViewCell.swift */,
+				1FF77D671CA5948E00F6BE2C /* QuizTestMixedViewController.swift */,
+				8775D2451CCA1539006FB861 /* Musik */,
 			);
 			name = QuizTestMixed;
 			sourceTree = "<group>";
 		};
-		874850431CAD41A8009267C3 /* Popover */ = {
+		8775D2451CCA1539006FB861 /* Musik */ = {
 			isa = PBXGroup;
 			children = (
-				8748503F1CAC6D6C009267C3 /* AboutViewController.swift */,
-				874850411CAC7C9C009267C3 /* HelpViewController.swift */,
+				87F140701CCAA4EE0097AA85 /* mySound.wav */,
+			);
+			name = Musik;
+			sourceTree = "<group>";
+		};
+		8775D2481CCA2740006FB861 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FCC36DD1C95E12400C9083F /* Lista.swift */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		8775D2491CCA596E006FB861 /* Synonimer */ = {
+			isa = PBXGroup;
+			children = (
 				87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */,
 			);
-			name = Popover;
+			name = Synonimer;
 			sourceTree = "<group>";
 		};
 		877C38931CA8867F005DF952 /* EditList */ = {
@@ -217,6 +238,16 @@
 				876D9CF21CA71AE500555AC8 /* EditListViewController.swift */,
 			);
 			name = EditList;
+			sourceTree = "<group>";
+		};
+		87F140761CCB43BD0097AA85 /* LoadningsScrren */ = {
+			isa = PBXGroup;
+			children = (
+				87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */,
+				8748503F1CAC6D6C009267C3 /* AboutViewController.swift */,
+				87F140741CCB41F40097AA85 /* SettingsViewController.swift */,
+			);
+			name = LoadningsScrren;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +334,7 @@
 			files = (
 				874F211D1CB2836A0020987F /* Main.storyboard in Resources */,
 				1F60E39D1C91823200E5A8A4 /* LaunchScreen.storyboard in Resources */,
+				87F140711CCAA4EE0097AA85 /* mySound.wav in Resources */,
 				1F60E39A1C91823200E5A8A4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,10 +355,10 @@
 			files = (
 				876D9CF51CA71BE600555AC8 /* CustomCellEditListTableViewCell.swift in Sources */,
 				1FCC37141C9AA0BC00C9083F /* CreateCustomCellListTableViewCell.swift in Sources */,
+				87F140751CCB41F40097AA85 /* SettingsViewController.swift in Sources */,
 				1F7437F41C9D881300F80E44 /* SelectQuizTypeViewController.swift in Sources */,
 				87F85FA11CAAC7DF007F4EBF /* SynonimViewController.swift in Sources */,
 				1F3808261CA28CE50018BBC5 /* CustomCellQuizType12TableViewCell.swift in Sources */,
-				1F60E3951C91823200E5A8A4 /* ViewController.swift in Sources */,
 				1FCC370E1C9A8A7400C9083F /* CreateAListViewController.swift in Sources */,
 				874850421CAC7C9C009267C3 /* HelpViewController.swift in Sources */,
 				1FF77D681CA5948E00F6BE2C /* QuizTestMixedViewController.swift in Sources */,

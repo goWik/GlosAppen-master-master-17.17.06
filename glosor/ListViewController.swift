@@ -9,45 +9,60 @@
 /*i klassen ska:
 visas namnet på gloslistan/gloslistor och datum då gloslistan/listor skapades
 en gloslista i respektive cell (med datum)
-man ska kunna ta bprt cellen
+man ska kunna ta bort cellen
 när man tryker på cellen navigeras man till nästa vy där presentationen av glosListaArray sker och användaren får flera val:
 */
 
 import UIKit
+import AVFoundation
+
 
 class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate {
     
-    //tabelView elements:
-    @IBOutlet weak var TabelView: UITableView!
+    // MARK: ELEMENTS
+    @IBOutlet weak var TableView: UITableView!
+    
+    @IBOutlet weak var NavBarItem: UIBarButtonItem!
+    
+
+    
+    var helperStruct:HelperStruct = HelperStruct()
+    
+    var delegateEditList:EditListViewController?
+    
+    var delagateCreateAListViewController:CreateAListViewController?
+    
+    var AllaGlosListorArray:[ListDescribe] = []
+    
+    var cells:[CellTableViewCell] = []
+    
+    
+    var settingsAppLanguageUppdate:String?
+
+    var toShare:String = ""
     
     var words:String = ""
     
-    let helperFunc: HelperFunc = HelperFunc()
-
-    var delegateEditList: EditListViewController?
-    //inicerar arrayen som håller ihop mina "färdiga gloslsitor"
-    var AllaGlosListorArray:[ListDescribe] = []
-    
-
+ 
     override func viewDidLoad() {
-        title = "dina listor"
         super.viewDidLoad()
-        TabelView.backgroundColor = UIColor(patternImage: UIImage(named: "RosaOBackgraund.png")!)
-        TabelView.dataSource = self
-        TabelView.delegate =  self
-        TabelView.reloadData()
+        
+        self.setUpSettingsAppLanguage()
+        TableView.backgroundColor = UIColor(patternImage: UIImage(named: "RosaOBackgraund.png")!)
+        TableView.dataSource = self
+        TableView.delegate =  self
+        TableView.reloadData()
 
     }
-
-    override func didReceiveMemoryWarning() {
+    
+   override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
-    //func. som följer PROTOKOLL: UITableViewDataSource
+
+    // MARK: PROTOKOLS FUNCKTIONS
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return AllaGlosListorArray.count
-       
     }
     
     
@@ -56,128 +71,222 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    //definerar min custom CELL
+    // MARK: CUSTOM CELLS
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let cell = TableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CellTableViewCell
+        
+        if cells.count < AllaGlosListorArray.count {
+            cells.append(cell)//lägg till celler i arragen bara förtsa gången func. körs
+        }
+        if cells.count >= 0 { //lägg ej flera celler
+            print("lägg ej flera celler")
+        }
+      
+        cell.TextLabelOutlet.text = AllaGlosListorArray[indexPath.row].name
+        //cell.TextLabelDatum.text = ("Listan skapad: \(helperStruct.dateFormatter())")
+        
+        for cell in cells {
+            if settingsAppLanguageUppdate == "Svenska" {
+                cell.TextLabelDatum.text = ("Listan skapad: \(helperStruct.dateFormatter())")
+            }
+            if settingsAppLanguageUppdate == "English"{
+                cell.TextLabelDatum.text = ("List created: \(helperStruct.dateFormatter())")
+            }
+            if settingsAppLanguageUppdate == "Polska" {
+                cell.TextLabelDatum.text = ("Lista utworzona: \(helperStruct.dateFormatter())")
+            }
+        }
 
-        let cell = TabelView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CellTableViewCell
         
-        cell.TextLabelOutlet.text = AllaGlosListorArray[indexPath.row].name //sätter namnet på listan till namnet som användaren angav då listan skapdes
-        cell.TextLabelDatum.text = ("Listan skapad: \(helperFunc.dateFormater())")
-        
-     
         return cell
     }
     
+    
+    // MARK: DELATE CUSTOM CELL
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    //func ska visa alert, som parameter titel för alert, message typen String
+    func displayAlert(title: String, message: String) {
+        
+        //definerar en alert controller
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    //:MARK  MY FUNCKTIONS
    //func körs från förra vyn vid action "save"
     func addObjPropertyToArray(listDescribeObj:ListDescribe){
         AllaGlosListorArray.append(listDescribeObj) //lägger till obj. med eneskaper: namn, språk1, språk2
-        TabelView.reloadData()
+        TableView.reloadData()
     }
     
-  
     
+    
+    func setUpSettingsAppLanguage(){
+            if settingsAppLanguageUppdate == "Svenska" {
+                title = "dina listor"
+                NavBarItem.title = "skapa"
+                //cell.TextLabelDatum.text = ("Listan skapad: \(helperStruct.dateFormatter())")
+            }
+            if settingsAppLanguageUppdate == "English"{
+                title = "your lists"
+                NavBarItem.title = "create"
+                //cell.TextLabelDatum.text = ("List created: \(helperStruct.dateFormatter())")
+            }
+            if settingsAppLanguageUppdate == "Polska" {
+                title = "twoje listy slowek"
+                NavBarItem.title = "utworz"
+        }
+    }
+    
+    
+    
+    
+    
+    // MARK: NAVIGATIONS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
+        
         if segue.identifier == "CreateList" {
            let VC = segue.destinationViewController as? CreateAListViewController
-             VC?.delegateCreateList = self
+             VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+                VC?.delegateListViewController = self
         }
         
        if segue.identifier == "SelectQuiz" {
             let VC = segue.destinationViewController as? SelectQuizTypeViewController
                 
             if let cell = sender as? UITableViewCell {
-                if let indexPath = TabelView.indexPathForCell(cell) {
-                    VC?.AllaGlosListorArray = AllaGlosListorArray[indexPath.row] //skickar data som ligger i respektive cell till  SelectQuiz vyn
+                if let indexPath = TableView.indexPathForCell(cell) {
+                    VC?.AllaGlosListorArray = AllaGlosListorArray[indexPath.row] //skickar data som ligger i respektive cell till  SelectQuiz Vyn
+                    VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
                     }
             }
         }
     }
     
-    //tar bort cellen DVS. listan och uppdaterar View
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
- 
     
-    func displayAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
-        return
+    //MARK: CUSTOM CELLS ANIMATIONS
+    override func viewWillAppear(animated: Bool) {
+        animateTable()
     }
     
+    func animateTable() { //animerar celler:
+        TableView.reloadData()
+        
+        let myCell = TableView.visibleCells //deklarerar en myCell typen UITableViewCell på existerande rowen
+        let screenHeight:CGFloat = TableView.bounds.size.height //anger mått för hight tabel
+        
+        for myCell in cells { //loppar igenom cells Arraygen
+            let myCell:UITableViewCell = myCell as UITableViewCell //cell lika med UITableViewCell
+            myCell.transform = CGAffineTransformMakeTranslation(0, screenHeight)//så hög är skärmen
+        }
+        
+        //loppar igenom cellsArraygen som populerar celler
+        for myCell in cells {
+            let mycell: UITableViewCell = myCell as UITableViewCell //deklarerar en myCell typen UITableViewCell på existerande rowen
+            
+            //kör animationen:
+            self.helperStruct.playAudio() //ljudet spelas upp samtigit som animationene körs
+            UIView.animateWithDuration(0.9, delay:0.03, usingSpringWithDamping: 1, initialSpringVelocity: 0,
+                                       options: .LayoutSubviews, animations: {
+                                        mycell.transform = CGAffineTransformMakeTranslation(0, 0);
+                }, completion: nil)
+        
+        }
+        //duration:NSTimeInterval:-tid, interval
+        //delay:NstimeInterval: snabhet->tid,interval
+        //usingSpringWithDamping:dämpnig Float
+        //options: enum (finns flea att välja mellan)
+        //animation: transform....
+    }
     
-    func displayShareSheet(shareContent:String) {
-        let activityViewController = UIActivityViewController(activityItems: [shareContent as NSString], applicationActivities: nil)
+    // MARK: SAHRE CONTENT
+    func toDisplayShare(ToShareContent: String) { //som parameter det som ska delas
+    
+        //definerar en activityController med items typen String
+        let activityViewController = UIActivityViewController(activityItems: [ToShareContent as String], applicationActivities: nil)
+        //hur presenteras:
         presentViewController(activityViewController, animated: true, completion: {})
     }
     
     
   func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .Destructive, title: "ta bort") { (action, indexPath) in
-            // delete item at indexPath
-            
-            let alert = UIAlertController(title: "Vill ta bort listan?", message: "tryck på OK för att radera", preferredStyle: .Alert)
-            let taBort =  UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive) {
+
+        let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { (action, indexPath) in
+                let alert = UIAlertController(title: "Vill ta bort listan?", message: "tryck på JA för att radera", preferredStyle: .Alert)
+            let taBort =  UIAlertAction(title: "JA", style: UIAlertActionStyle.Destructive) {
                 (UIAlertAction) -> Void in
-                
                 //datan tas bort....
                 self.AllaGlosListorArray.removeAtIndex(indexPath.row)//från indexPath
-                self.TabelView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)//animation
+                self.TableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)//animation
             }
             
-            let cancel = UIAlertAction(title: "NO", style: .Cancel, handler: nil)
+            let cancel = UIAlertAction(title: "NEJ", style: .Cancel, handler: nil)
             //alertAction
             alert.addAction(cancel)
             alert.addAction(taBort)
             self.presentViewController(alert, animated: true,completion: nil)
         }
+         
     
-        //-------------share list-------
+        //SHARE LIST--------------------------------------
         let share = UITableViewRowAction(style: .Normal, title: "dela") { (action, indexPath) in
             
-         self.displayShareSheet("Dina gloslista. Namn på gloslistan: \(self.AllaGlosListorArray[indexPath.row].name), språk1: \(self.AllaGlosListorArray[indexPath.row].language1), språk2: \(self.AllaGlosListorArray[indexPath.row].language2) glosor: \(self.AllaGlosListorArray[indexPath.row].glosListorArray)")
-                //\(self.giveListWords())")
-            }
-    
-        share.backgroundColor = UIColor.darkGrayColor()
-        return [delete, share]
-    }
-    
+       //en loop som konverterar min datatyp:Lista till String för att kunna skriva ut- DELA utan hackparanteser
+        for var i = 0; i <= self.AllaGlosListorArray[indexPath.row].glosListorArray.count - 1; i += 1 {
+            let content = String(self.AllaGlosListorArray[indexPath.row].glosListorArray[i])
+            self.toShare = self.toShare + " " + content
+        }
+         self.toDisplayShare("Dina gloslisa\r\n Namn på gloslistan: \(self.AllaGlosListorArray[indexPath.row].name)\r\n Språk1: \(self.AllaGlosListorArray[indexPath.row].language1) språk2: \(self.AllaGlosListorArray[indexPath.row].language2) \r\n Glosor: \(self.toShare)")
 
-    //--popOver vid Action
+            self.toShare = ""
+        }
+
+        share.backgroundColor = UIColor.darkGrayColor()
+    
+    return [delete,share]
+    
+    }
+
+    
+    // MARK: ACTIONS
+    
     @IBAction func ButtonHelpAction(sender: UIBarButtonItem) {
     
         let VC = storyboard?.instantiateViewControllerWithIdentifier("ShowHelp") as! HelpViewController
-        
-        VC.preferredContentSize = CGSize(width: 350 , height: 330) //formeterar popover
+        //formeterar popover
+        VC.preferredContentSize = CGSize(width: 350, height: 600)
         
         let navController =  UINavigationController(rootViewController: VC)
-        
-        //hur persenteras?
+        //presentation av popover
         navController.modalPresentationStyle = UIModalPresentationStyle.Popover
         
         let popover = navController.popoverPresentationController
         popover?.delegate = self
-        popover?.barButtonItem = sender as? UIBarButtonItem
+        popover?.barButtonItem = sender as UIBarButtonItem
+        
         self.presentViewController(navController, animated: true, completion: nil)
     }
-    
-    
-    
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .None
     }
     
     
-    //GR vid swipe tillbaka to LoadningScreen
    @IBAction func SwipeGRToLoadningSreen(sender: UISwipeGestureRecognizer) {
-        performSegueWithIdentifier("GoBackToLoadningScreen", sender: sender)
-        print("fungerar!")
+        performSegueWithIdentifier("GoBackToLoadningScreen", sender: settingsAppLanguageUppdate)
     }
     
     
 }
+
+
+
+

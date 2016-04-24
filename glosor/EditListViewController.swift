@@ -15,14 +15,14 @@ import UIKit
 
 class EditListViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
-    //elements:
+    //:MARK ELEMENTS
     @IBOutlet weak var TextFiledListName: UITextField!
     
     @IBOutlet weak var ButtonAddOutlet: UIButton!
     
     @IBOutlet weak var TextFieldLanguage1:UITextField!
     
-    @IBOutlet weak var TextFieldLaungage2: UITextField!
+    @IBOutlet weak var TextFieldLanguage2: UITextField!
     
     @IBOutlet weak var TextFieldWord1: UITextField!
     
@@ -41,96 +41,59 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
     
     var glosArray:[Lista] = []
     
-    var createObjglosa:Lista = Lista(word1: "ord1", word2: "ord2")
+    
+    var settingsAppLanguageUppdate:String?
+    
     
     let myColor = UIColor(red: 160.0/255.0, green: 41.0/255.0, blue: 117.0/255.0, alpha: 1.0)
     
     
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        title = "redigera"
+        self.setUpSettingsAppLanguage()
             
-        //formaterar button----
+        //Formatterar button----
         ButtonAddOutlet.layer.cornerRadius = 8
         ButtonAddOutlet.layer.borderWidth = 1
         ButtonAddOutlet.layer.borderColor = myColor.CGColor
         
         //-- linjer--
-        formated_TextFiled()
-        formeted_TextFieldLaungage1()
-        formeted_TextFieldLaungage2()
-        formated_TextFieldWord1()
-        formated_TextFieldWord2()
-        TextFieldLanguage1.layer.masksToBounds = true
-        TextFieldLaungage2.layer.masksToBounds = true
-        TextFieldWord1.layer.masksToBounds = true
-        TextFieldWord2.layer.masksToBounds = true
-        
+        self.formated_TextFiled(TextFiledListName)
+        self.formated_TextFiled(TextFieldLanguage1)
+        self.formated_TextFiled(TextFieldLanguage2)
+        self.formated_TextFiled(TextFieldWord1)
+        self.formated_TextFiled(TextFieldWord2)
+
         self.TextFiledListName.delegate = self
         self.TextFieldLanguage1.delegate = self
-        self.TextFieldLaungage2.delegate = self
+        self.TextFieldLanguage2.delegate = self
         self.TextFieldWord1.delegate = self
         self.TextFieldWord2.delegate = self
-            
+        
         self.setStatiskaDelar()
         TableView.reloadData()
     }
     
     
     
-    func formated_TextFiled(){
+    func formated_TextFiled(textField:UITextField){
         let border = CALayer()
         let width = CGFloat(1.0)
         border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFiledListName.frame.size.height - width, width:TextFiledListName.frame.size.width, height: TextFiledListName.frame.size.height)
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:textField.frame.size.width, height: textField.frame.size.height)
         border.borderWidth = width
-        TextFiledListName.layer.addSublayer(border)
+        textField.layer.addSublayer(border)
+        textField.textColor = UIColor.blackColor()
     }
     
-    func formeted_TextFieldLaungage1(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFieldLanguage1.frame.size.height - width, width: TextFieldLanguage1.frame.size.width, height: TextFieldLanguage1.frame.size.height)
-        border.borderWidth = width
-       TextFieldLanguage1.layer.addSublayer(border)
-    }
-    
-    func formeted_TextFieldLaungage2(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFieldLaungage2.frame.size.height - width, width: TextFieldLaungage2.frame.size.width, height: TextFieldLaungage2.frame.size.height)
-        border.borderWidth = width
-        TextFieldLaungage2.layer.addSublayer(border)
-    }
-    
-    func formated_TextFieldWord1(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFieldWord1.frame.size.height - width, width:  TextFieldWord1.frame.size.width, height: TextFieldWord1.frame.size.height)
-        border.borderWidth = width
-        TextFieldWord1.layer.addSublayer(border)
-    }
-    
-    func formated_TextFieldWord2(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFieldWord2.frame.size.height - width, width:  TextFieldWord2.frame.size.width, height: TextFieldWord2.frame.size.height)
-        border.borderWidth = width
-        TextFieldWord2.layer.addSublayer(border)
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     
-    //FUNc. som fäljer PROTOKOLL: UITableViewDataSource
+    //:MARK PROTKOLS FUNCKTIONS
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (AllaGlosListorArray?.glosListorArray.count)!
  
@@ -140,17 +103,52 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
         return 1
     }
     
+    //MARK: SET UP SETTINGS APPLanguage
+    func setUpSettingsAppLanguage(){
+        if settingsAppLanguageUppdate == "Svenska" {
+            title = "redigera listan"
+            updateList.title = "uppdatera"
+            ButtonAddOutlet.setTitle("lägg till", forState: .Normal)
+            TextFiledListName.placeholder = "namn på din lista"
+            TextFieldLanguage1.placeholder = "språk1"
+            TextFieldLanguage2.placeholder = "språk2"
+            TextFieldWord1.placeholder = "ord1"
+            TextFieldWord2.placeholder = "ord2"
+
+        }
+        if settingsAppLanguageUppdate == "English"{
+            title = "edit list"
+            updateList.title = "update"
+            ButtonAddOutlet.setTitle("add", forState: .Normal)
+            TextFiledListName.placeholder = "list name"
+            TextFieldLanguage1.placeholder = "Language1"
+            TextFieldLanguage2.placeholder = "Language2"
+            TextFieldWord1.placeholder = "word1"
+            TextFieldWord2.placeholder = "word2"
+        }
+        if settingsAppLanguageUppdate == "Polska" {
+            title = "redaguj slowka"
+            updateList.title = "odnow"
+            ButtonAddOutlet.setTitle("dodaj", forState: .Normal)
+            TextFiledListName.placeholder = "nazwa listy"
+            TextFieldLanguage1.placeholder = "jezyk1"
+            TextFieldLanguage2.placeholder = "jezyk2"
+            TextFieldWord1.placeholder = "slowo1"
+            TextFieldWord2.placeholder = "slowo2"
+        }
+    }
+    
     
     //sätter gammalt data till elemnts som ska visas när vyn laddas
     func setStatiskaDelar(){
         TextFiledListName.text = AllaGlosListorArray!.name
         TextFieldLanguage1.text = AllaGlosListorArray!.language1
-        TextFieldLaungage2.text = AllaGlosListorArray!.language2
+        TextFieldLanguage2.text = AllaGlosListorArray!.language2
         TableView.reloadData()
     }
     
     
-    //formeterar custom cellen
+    //:MARK CUSTOM CELL
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CellEditList", forIndexPath: indexPath) as! CustomCellEditListTableViewCell
@@ -159,12 +157,11 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
         cell.LabelLanguage1.text  = AllaGlosListorArray!.language1
         cell.LabelLanguage2.text = AllaGlosListorArray!.language2
             
-        //ska utföras...
         cell.LabelLanguage1.text = TextFieldLanguage1.text
-        cell.LabelLanguage2.text = TextFieldLaungage2.text
+        cell.LabelLanguage2.text = TextFieldLanguage2.text
         
         //sätt till språken oberånde om de ändras eler ej
-       //dynamiska word1, word2
+        //dynamiska word1, word2
         cell.TextFiledWord1.text = AllaGlosListorArray!.glosListorArray[indexPath.row].word1
         cell.TextFiledWord2.text = AllaGlosListorArray!.glosListorArray[indexPath.row].word2
        
@@ -174,9 +171,10 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         TextFiledListName.resignFirstResponder()
         TextFieldLanguage1.resignFirstResponder()
-        TextFieldLaungage2.resignFirstResponder()
+        TextFieldLanguage2.resignFirstResponder()
         TextFieldWord1.resignFirstResponder()
         TextFieldWord2.resignFirstResponder()
+        
         return true
     }
     
@@ -194,19 +192,19 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
         }
     
     
-    //action add obj---------
+    //:MARK ACTIONS
     @IBAction func ButtonAddGlosObj(sender: UIButton) {
         
         TextFieldWord1.text! = TextFieldWord1.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         TextFieldWord2.text! = TextFieldWord2.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
         //SKAPAR ETT OBJEKT VID KNAPPTRYCK ---LÄGG TILL---------------
-         if TextFieldWord1.text! != "" && TextFieldWord2.text! != "" && TextFieldLanguage1.text! != "" && TextFieldLaungage2.text! != "" {
-            let glosaObj:Lista = createObjglosa.createGlosObj(TextFieldWord1.text!, word2: TextFieldWord2.text!)
+         if TextFieldWord1.text! != "" && TextFieldWord2.text! != "" && TextFieldLanguage1.text! != "" && TextFieldLanguage2.text! != "" {
+            
+            let glosaObj:Lista = Lista(word1: TextFieldWord1.text!, word2: TextFieldWord2.text!)
             AllaGlosListorArray!.glosListorArray.append(glosaObj)
-           print(" från add obj: \(AllaGlosListorArray!.glosListorArray)")
-
-        } else {
+            
+         } else {
             let alert = UIAlertController(title: "alert", message: "Kontrollera om alla fälten är fyllda. Namnet på din gloslista, Ord1 och Ord2", preferredStyle: UIAlertControllerStyle.Alert)
               alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
               self.presentViewController(alert, animated: true, completion: nil)
@@ -218,10 +216,8 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
                 
                 self.ButtonUpdateListAction(self.updateList)//körs då 10 ord är ifylda
             }))
-            
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        
         TextFieldWord1.text = ""
         TextFieldWord2.text = ""
         TableView.reloadData()
@@ -234,16 +230,15 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
         if AllaGlosListorArray!.glosListorArray.count > 0 && TextFiledListName.text! != "" {
             
             //SKAPAR OBJ VID KANPTYCKET OCH SKICKAR OBJ TILL NÄSTA VYN-------
-            let listDescribeObj = ListDescribe(name: TextFiledListName.text!, language1:TextFieldLanguage1.text!, language2:TextFieldLaungage2.text!, glosListorArray: AllaGlosListorArray!.glosListorArray)
+            let listDescribeObj = ListDescribe(name: TextFiledListName.text!, language1:TextFieldLanguage1.text!, language2:TextFieldLanguage2.text!, glosListorArray: AllaGlosListorArray!.glosListorArray)
             
-              print("namn: \(listDescribeObj.name), språk1: \(listDescribeObj.language1), språk2: \(listDescribeObj.language2), glosListaArray: :\(listDescribeObj.glosListorArray)")
+             // print("namn: \(listDescribeObj.name), språk1: \(listDescribeObj.language1), språk2: \(listDescribeObj.language2), glosListaArray: :\(listDescribeObj.glosListorArray)")
             
             delegate?.addObjPropertyToArray(listDescribeObj)//körs från listViewController
-                       
-        }
+         }
         TableView.reloadData()
  
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewControllerAnimated(true) //skickas till föregånde vyn
     }
     
 }

@@ -7,17 +7,18 @@
 //
 
 import Foundation
-import UIKit
+import AVFoundation
 
+
+
+//:MARK PROTOKOLS
 protocol ListProtokolType {
     
     var word1:String {get set}
     var word2:String {get set}
   
-    
     init(word1:String, word2:String)
     
-    func createGlosObj(word1:String, word2:String) -> Lista
 }
 
 
@@ -33,6 +34,7 @@ protocol ListDescribeType {
 }
 
 
+//:MARK CLASSES
 class Lista: ListProtokolType , CustomStringConvertible {
 
     var word1:String
@@ -43,16 +45,6 @@ class Lista: ListProtokolType , CustomStringConvertible {
         self.word1 = word1
         self.word2 = word2
     }
-    
-
-    func createGlosObj(word1:String, word2:String) -> Lista  {
-        
-        let objGlosa = Lista(word1: word1, word2: word2)
-        print("ord1: \(objGlosa.word1), ord2: \(objGlosa.word2)")
-
-        return objGlosa
-    }
-    
     
     var description: String {
         return "\(word1),\(word2)"
@@ -86,12 +78,29 @@ class ListDescribe: ListDescribeType, CustomStringConvertible {
 }
 
 
-class HelperFunc {
+//:MARK STRUCT
+struct HelperStruct {
     
-    func dateFormater()-> String{ //func returnerar dagens datum
+  var audioFile = AVAudioPlayer()
+    
+  var audioPath = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("mySound", ofType: "wav")!)
+    
+    
+    mutating func playAudio(){
+        do {
+            try audioFile = AVAudioPlayer(contentsOfURL: audioPath, fileTypeHint: nil)
+            audioFile.play()
+            print("fil exist")
+        } catch {
+            print("file not found")
+        }
+    }
+    
+
+    func dateFormatter()-> String{
         let clock = NSDate()
         let formatter = NSDateFormatter()
-        formatter.dateStyle = .LongStyle
+        formatter.dateStyle = .ShortStyle
         
     return formatter.stringFromDate(clock)
     }

@@ -13,11 +13,14 @@
 3. förhöra blandat
  här presenteras data, går ej att redigera, änvändaren får gå vidare för att redigera data
  */
+
+
+
 import UIKit
 
 class SelectQuizTypeViewController: UIViewController {
     
-    //Elemetns:
+    //:MARK ELEMENTS
     @IBOutlet weak var ButtonEditListOutlet: UIButton!
     
     @IBOutlet weak var ButtonSelectQuizLanguage12Outlet: UIButton!
@@ -32,101 +35,90 @@ class SelectQuizTypeViewController: UIViewController {
     
 
     var AllaGlosListorArray:ListDescribe?
+    
+    var settingsAppLanguageUppdate:String?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         ViewOutlet.backgroundColor = UIColor(patternImage: UIImage(named: "RosaOBackgraund.png")!)
         title = AllaGlosListorArray!.name
-  
-        //----edit
-        ButtonEditListOutlet.setTitle("redigera", forState: UIControlState.Normal)
-        ButtonEditListOutlet.layer.cornerRadius = 10
-        ButtonEditListOutlet.layer.borderWidth = 1
-        ButtonEditListOutlet.layer.borderColor = UIColor.whiteColor().CGColor
-        //--- 1-2
-        ButtonSelectQuizLanguage12Outlet.setTitle("\(AllaGlosListorArray!.language1) \(AllaGlosListorArray!.language2)", forState: UIControlState.Normal)
-        ButtonSelectQuizLanguage12Outlet.layer.cornerRadius = 10
-        ButtonSelectQuizLanguage12Outlet.layer.borderWidth = 1
-        ButtonSelectQuizLanguage12Outlet.layer.borderColor = UIColor.whiteColor().CGColor
-        //-----2-1
-        ButtonSelectQuizLanguage21Outlet.setTitle("\(AllaGlosListorArray!.language2) \(AllaGlosListorArray!.language1)", forState: UIControlState.Normal)
-        ButtonSelectQuizLanguage21Outlet.layer.cornerRadius = 10
-        ButtonSelectQuizLanguage21Outlet.layer.borderWidth = 1
-        ButtonSelectQuizLanguage21Outlet.layer.borderColor = UIColor.whiteColor().CGColor
-        //MIX--------
-         ButtonSelecktQuizBothLanguage.setTitle("bandad", forState: .Normal)
-        ButtonSelecktQuizBothLanguage.layer.cornerRadius = 10
-        ButtonSelecktQuizBothLanguage.layer.borderWidth = 1
-        ButtonSelecktQuizBothLanguage.layer.borderColor = UIColor.whiteColor().CGColor
         
-        //print("Data som ligger nu i VDLoad i presentData: \(AllaGlosListorArray!)")
+        self.setUpSettingsAppLanguage()
+  
+        ButtonSelectQuizLanguage12Outlet.setTitle("\(AllaGlosListorArray!.language1) \(AllaGlosListorArray!.language2)", forState: UIControlState.Normal)
+     
+        ButtonSelectQuizLanguage21Outlet.setTitle("\(AllaGlosListorArray!.language2) \(AllaGlosListorArray!.language1)", forState: UIControlState.Normal)
+  
+        formated_myButton(ButtonEditListOutlet)
+        formated_myButton(ButtonSelectQuizLanguage12Outlet)
+        formated_myButton(ButtonSelectQuizLanguage21Outlet)
+        formated_myButton(ButtonSelecktQuizBothLanguage)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
     }
     
+    
+    //MARK: MY BUTTONS FORMETED
+    func formated_myButton(button:UIButton){
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
+    
+    
+    func setUpSettingsAppLanguage(){
+        if settingsAppLanguageUppdate == "Svenska" {
+            ButtonEditListOutlet.setTitle("redigera", forState: UIControlState.Normal)
+            ButtonSelecktQuizBothLanguage.setTitle("bandad", forState: .Normal)
+            
+        }
+        if settingsAppLanguageUppdate == "English"{
+            ButtonEditListOutlet.setTitle("edit", forState: UIControlState.Normal)
+            ButtonSelecktQuizBothLanguage.setTitle("mixed", forState: .Normal)
+        }
+        if settingsAppLanguageUppdate == "Polska" {
+            ButtonEditListOutlet.setTitle("redaguj", forState: UIControlState.Normal)
+            ButtonSelecktQuizBothLanguage.setTitle("mieszana", forState: .Normal)
+        }
+    }
+
+    
+    //:MARK NAVIGATIONS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "EditList" {
             let VC = segue.destinationViewController as? EditListViewController
             VC?.AllaGlosListorArray = AllaGlosListorArray
+            VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
         }
         
         if segue.identifier == "QuizTest12" {
             let VC = segue.destinationViewController as? QuizTestType12ViewController
             VC?.AllaGlosListorArray = AllaGlosListorArray
+            VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
         }
         
         if segue.identifier == "QuizTest21" {
             let VC = segue.destinationViewController as?
             QuizTest21ViewController
             VC?.AllaGlosListorArray = AllaGlosListorArray
+            VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
         }
         
         if segue.identifier == "QuizTestMixed" {
             let VC = segue.destinationViewController as?
             QuizTestMixedViewController
             VC?.AllaGlosListorArray = AllaGlosListorArray
+            VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
         }
     }
 
-    
-    
-   
-    @IBAction func EditList(sender: UIButton) {
-         print("data som ska uppdateras:: \(AllaGlosListorArray!)")
-        /*ButtonEditListOutlet.transform = CGAffineTransformMakeScale(0.2, 0.2)
-        UIView.animateWithDuration(2.0,
-                                   delay: 0,
-                                   usingSpringWithDamping: 0.2,
-                                   initialSpringVelocity: 6.0,
-                                   options: UIViewAnimationOptions.AllowUserInteraction,
-                                   animations: {
-                                    self.ButtonEditListOutlet.transform = CGAffineTransformIdentity
-            }, completion: nil)*/
-        
-       
-
-    }
-    
-  @IBAction func ButtonSelectQuizLanguage12Action(sender: UIButton) {
-        print("data som ska vidare till förhör språk 1- språk2: \(AllaGlosListorArray!)")
-    }
-    
-    
-    @IBAction func ButtonSelectQuizLaungage21(sender: UIButton) {
-        print("data som ska vidare till språk2-språk 1: \(AllaGlosListorArray!)")
-    }
 
     
-    
-    @IBAction func ButtonSelectQuizLaungageMixed(sender: UIButton) {
-        print("data som ska vidare till förhör blandat: \(AllaGlosListorArray!)")
-    }
     
 }
 

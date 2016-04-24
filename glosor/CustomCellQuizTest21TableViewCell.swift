@@ -20,12 +20,17 @@ class CustomCellQuizTest21TableViewCell: UITableViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        ImageToShow.backgroundColor = UIColor(patternImage: UIImage(named: "checkMark.png")!)
+        ImageToShow.hidden = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.WordToTranslate.delegate = self
         self.TheTranslatedWord.delegate = self
+        WordToTranslate.textColor = UIColor.blackColor()
+        TheTranslatedWord.textColor = UIColor.blackColor()
+        TheTranslatedWord.placeholder = "ditt svar"
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {

@@ -22,7 +22,7 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
     //protokollen: UITableViewDataSource, UITableViewDelegate
     
     
-    //UIViewController elements:
+    //:MARK ELEMENTS
     @IBOutlet weak var TextFiledListName: UITextField!
     
     @IBOutlet weak var TextFieldLanguage1: UITextField!
@@ -39,25 +39,28 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var SaveOutlet: UIBarButtonItem!
     
+    
   
-    
-    
-    let helperFunc: HelperFunc = HelperFunc()
+    let helperStruct:HelperStruct = HelperStruct()
     
     var glosArray:[Lista] = [] //här läggs det till objGlosa-objekt
+
     
-    var createObjglosa:Lista = Lista(word1: "ord1", word2: "ord2")
+    var delegateListViewController:ListViewController?
     
-    var delegateCreateList:ListViewController?//delegate som ger mig tillgång till ListViewContoller
     
-    var cells:[CreateCustomCellListTableViewCell]=[]
+    var cells:[CreateCustomCellListTableViewCell] = []
+    
+    
+    var settingsAppLanguageUppdate:String?
     
     let myColor = UIColor(red: 160.0/255.0, green: 41.0/255.0, blue: 117.0/255.0, alpha: 1.0)
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "skapa listan"
+        setUpSettingsAppLanguage()
         
         ButtonAddToListOutlet.layer.cornerRadius = 8
         ButtonAddToListOutlet.layer.borderWidth = 1
@@ -69,73 +72,83 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
         self.TextFieldWord1.delegate = self
         self.TextFieldWord2.delegate = self
         
-        //func för formatering av textfält
-        self.formated_TextFiled()
-        self.formated_TextFieldLanguage1()
-        self.formeted_TextFiledLabelLanguage2()
-        self.formated_TextFieldWord1()
-        self.formated_TextFieldWord2()
-        TextFieldLanguage1.layer.masksToBounds = true
-        TextFiledLabelLanguage2.layer.masksToBounds = true
-        TextFieldWord1.layer.masksToBounds = true
-        TextFieldWord2.layer.masksToBounds = true
+        formated_TextFiled(TextFiledListName)
+        formated_TextFiled(TextFieldLanguage1)
+        formated_TextFiled(TextFiledLabelLanguage2)
+        formated_TextFiled(TextFieldWord1)
+        formated_TextFiled(TextFieldWord2)
+  
         tableView.reloadData()
     }
     
+    //MARK: SET UP SETTINGS APPLanguage
+    func setUpSettingsAppLanguage(){
+        if settingsAppLanguageUppdate == "Svenska" {
+            title = "skapa listan"
+            SaveOutlet.title = "klar"
+            ButtonAddToListOutlet.setTitle("lägg till", forState: .Normal)
+            TextFiledListName.placeholder = "namn på din lista"
+            TextFieldLanguage1.placeholder = "språk1"
+            TextFiledLabelLanguage2.placeholder = "språk2"
+            TextFieldWord1.placeholder = "ord1"
+            TextFieldWord2.placeholder = "ord2"
+            
+        }
+        if settingsAppLanguageUppdate == "English"{
+            title = "create list"
+            SaveOutlet.title = "done"
+            ButtonAddToListOutlet.setTitle("add", forState: .Normal)
+            TextFiledListName.placeholder = "list name"
+            TextFieldLanguage1.placeholder = "Language1"
+            TextFiledLabelLanguage2.placeholder = "Language2"
+            TextFieldWord1.placeholder = "word1"
+            TextFieldWord2.placeholder = "word2"
+        }
+        if settingsAppLanguageUppdate == "Polska" {
+            title = "utwoz liste"
+            SaveOutlet.title = "gotowe"
+            ButtonAddToListOutlet.setTitle("dodaj", forState: .Normal)
+            TextFiledListName.placeholder = "nazwa listy"
+            TextFieldLanguage1.placeholder = "jezyk1"
+            TextFiledLabelLanguage2.placeholder = "jezyk2"
+            TextFieldWord1.placeholder = "slowo1"
+            TextFieldWord2.placeholder = "slowo2"
+        }
+    }
    
     
-    func formated_TextFiled(){
+    
+   
+    //MARK: MY FORMAED TEXTFIELD
+    func formated_TextFiled(textField:UITextField){
         let border = CALayer()
         let width = CGFloat(1.0)
+        textField.layer.masksToBounds = true
         border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFiledListName.frame.size.height - width, width:TextFiledListName.frame.size.width, height: TextFiledListName.frame.size.height)
+        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:textField.frame.size.width, height: textField.frame.size.height)
         border.borderWidth = width
-        TextFiledListName.layer.addSublayer(border)
+        textField.layer.addSublayer(border)
+        textField.textColor = UIColor.blackColor()
     }
     
-    func formated_TextFieldLanguage1(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFieldLanguage1.frame.size.height - width, width:  TextFieldLanguage1.frame.size.width, height: TextFieldLanguage1.frame.size.height)
-        border.borderWidth = width
-        TextFieldLanguage1.layer.addSublayer(border)
+    
+    //:MARK TEXTFILED
+    func textFieldShouldReturn(textField: UITextField) -> Bool{
+        TextFieldLanguage1.resignFirstResponder()
+        TextFiledListName.resignFirstResponder()
+        TextFiledLabelLanguage2.resignFirstResponder()
+        TextFieldWord1.resignFirstResponder()
+        TextFieldWord2.resignFirstResponder()
+        return true
     }
     
-    func formeted_TextFiledLabelLanguage2(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFiledLabelLanguage2.frame.size.height - width, width:  TextFiledLabelLanguage2.frame.size.width, height: TextFiledLabelLanguage2.frame.size.height)
-        border.borderWidth = width
-        TextFiledLabelLanguage2.layer.addSublayer(border)
-    }
-    
-    func formated_TextFieldWord1(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFieldWord1.frame.size.height - width, width:  TextFieldWord1.frame.size.width, height: TextFieldWord1.frame.size.height)
-        border.borderWidth = width
-        TextFieldWord1.layer.addSublayer(border)
-    }
-    
-    func formated_TextFieldWord2(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: TextFieldWord2.frame.size.height - width, width:  TextFieldWord2.frame.size.width, height: TextFieldWord2.frame.size.height)
-        border.borderWidth = width
-        TextFieldWord2.layer.addSublayer(border)
-        
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
      }
     
     
-    //FUNc. som följer PROTOKOLL: UITableViewDataSource
+    //:MARK PROTOKOLS FUNCKTIONS
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return glosArray.count
     }
@@ -145,7 +158,7 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    //formeterar min custom cell
+    //:MARK CUSTOM CELL
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CellList", forIndexPath: indexPath) as! CreateCustomCellListTableViewCell
@@ -158,37 +171,25 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
         cell.LabelWord1.text = "\(glosArray[indexPath.row].word1)"
         cell.LabelWord2.text = "\(glosArray[indexPath.row].word2)"
        
-        
         return cell
     }
     
     
-    //--- gömmer tagentbordet----
-    func textFieldShouldReturn(textField: UITextField) -> Bool{
-        TextFieldLanguage1.resignFirstResponder()
-        TextFiledListName.resignFirstResponder()
-        TextFiledLabelLanguage2.resignFirstResponder()
-        TextFieldWord1.resignFirstResponder()
-        TextFieldWord2.resignFirstResponder()
-        return true
-    }
-    
-
-    //ta bort glosobj från arrayen----------------
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            self.glosArray.removeAtIndex(indexPath.row)
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        //cellen tas bort
+        if editingStyle == .Delete { //enum:  .Delate
+         self.glosArray.removeAtIndex(indexPath.row)
+         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
     
 
-    //ACTION:----------------------
+    //:MARK ACTIONS
     @IBAction func ButtonAddObject(sender: UIButton) {
         
         TextFieldWord1.text! = TextFieldWord1.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -197,14 +198,17 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
        if TextFieldWord1.text! != "" && TextFieldWord2.text! != "" && TextFieldLanguage1.text! != "" && TextFiledLabelLanguage2.text! != "" {
            
             //SKAPAR ETT OBJEKT VID KNAPPTRYCK ---LÄGG TILL---------------
-            let glosaObj:Lista = createObjglosa.createGlosObj(TextFieldWord1.text!, word2: TextFieldWord2.text!)
+            let glosaObj:Lista = Lista(word1: TextFieldWord1.text!, word2: TextFieldWord2.text!)
             glosArray.append(glosaObj)
+        print(glosArray)
         
        } else {
         let alert = UIAlertController(title: "alert", message: "Kontrollera om alla fälten är fyllda. Namnet på din gloslista, Ord1 och Ord2", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+        
         }
+        
 
         //ALERT FÖR BEGRESNING AV 10 ORD-----
           if glosArray.count >= 10 {
@@ -216,15 +220,16 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
            
             self.presentViewController(alert, animated: true, completion: nil)
         }
-            TextFieldWord1.text = ""
-            TextFieldWord2.text = ""
-            tableView.reloadData()
+        TextFieldWord1.text = ""
+        TextFieldWord2.text = ""
+        tableView.reloadData()
         
         }
 
     // aktion för spara hela listan och skicka till föregånde vy där listan läggs till i "AllaGloListorArragen"
     @IBAction func ButtonSaveAction(sender: UIBarButtonItem) {
         
+        //blanka tecken i inputen tas bort
         TextFiledListName.text! = TextFiledListName.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         TextFiledLabelLanguage2.text! = TextFiledLabelLanguage2.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         TextFieldLanguage1.text! = TextFieldLanguage1.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -237,17 +242,24 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
             
             print("namn: \(listDescribeObj.name), språk1: \(listDescribeObj.language1), språk2: \(listDescribeObj.language2), glosListaArray: :\(listDescribeObj.glosListorArray)")
             
-          delegateCreateList?.addObjPropertyToArray(listDescribeObj)//kör func från klassen ListViewController då listDescribeObj läggs till i AllaGloslitorArrayen
-            
+         delegateListViewController?.addObjPropertyToArray(listDescribeObj)//kör func från klassen ListViewController då listDescribeObj läggs till i AllaGloslitorArrayen
+            print("skdekjdfjbfgfsh")
             
         } else {
         let alert = UIAlertController(title: "alert", message: "Kontrollera om alla fälten är fyllda. Namnet på din gloslista, Ord1 och Ord2", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        
         tableView.reloadData()
         navigationController?.popViewControllerAnimated(true)//går till föregånde vyn
     }
  
 }
+
+
+
+
+
+
+
+
