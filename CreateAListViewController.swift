@@ -43,14 +43,14 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
   
     let helperStruct:HelperStruct = HelperStruct()
     
+    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
+    
     var glosArray:[Lista] = [] //här läggs det till objGlosa-objekt
 
     var delegateListViewController:ListViewController?
     
     var cells:[CreateCustomCellListTableViewCell] = []
     
-    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
-
     var settingsAppLanguageUppdate:String?
     
 

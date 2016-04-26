@@ -121,15 +121,15 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
     
     //MARK: SET UP SETTINGS APPLanguage
     func setUpSettingsAppLanguage(){
-            if settingsAppLanguageUppdate == "Svenska" {
+            if settingsAppLanguageUppdate == "Svenska" || settingsAppLanguageUppdate == nil { 
                 title = "blandat"
-                ButtonShowAnswerOutlet.setTitle("lägg till", forState: .Normal)
+                ButtonShowAnswerOutlet.setTitle("rätta", forState: .Normal)
                 ButtonRedoOutlet.setTitle("gör om", forState: .Normal)
 
             }
             if settingsAppLanguageUppdate == "English"{
                 title = "mixed"
-                ButtonShowAnswerOutlet.setTitle("add", forState: .Normal)
+                ButtonShowAnswerOutlet.setTitle("correct", forState: .Normal)
                 ButtonRedoOutlet.setTitle("redo", forState: .Normal)
             }
     }
@@ -169,11 +169,11 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
     //:MARK NAVIGATIONS:
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "ShowSynonim" {
-            let VC = segue.destinationViewController as? SynonimViewController
+        if segue.identifier == "Showsynonym" {
+            let VC = segue.destinationViewController as? SynonymViewController
             if let cell = sender as? UITableViewCell {
                 if let indexPath = TableView.indexPathForCell(cell) {
-                    VC?.synonimWord = String(AllaGlosListorArray!.glosListorArray[indexPath.row].word1)
+                    VC?.synonymWord = String(AllaGlosListorArray!.glosListorArray[indexPath.row].word1)
                 }
             }
         }

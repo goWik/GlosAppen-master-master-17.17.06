@@ -1,18 +1,18 @@
 //
-//  SynonimViewController.swift
+//  synonymViewController.swift
 //  glosor
 //
 //  Created by gm on 2016-03-29.
 //  Copyright © 2016 gm. All rights reserved.
 //
 
-//klassen fungerar som en webbläsare viken presenterar en synonim till det sökta ordet
+//klassen fungerar som en webbläsare viken presenterar en synonym till det sökta ordet
 
 
 
 import UIKit
 
-class SynonimViewController: UIViewController {
+class SynonymViewController: UIViewController {
     
     //:MARK ELEMENTS
     @IBOutlet weak var WebView: UIWebView!
@@ -21,14 +21,14 @@ class SynonimViewController: UIViewController {
     
     
    
-    var synonimWord:String?//ordet som ska sökas efter
+    var synonymWord:String?//ordet som ska sökas efter
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "synonim \(synonimWord!)"
+        title = "synonym \(synonymWord!)"
   
-        let urlString = "http://www.synonymer.se/?query=\(synonimWord!)"
+        let urlString = "http://www.synonymer.se/?query=\(synonymWord!)"
     
             if let escapedUrlString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) {
                 

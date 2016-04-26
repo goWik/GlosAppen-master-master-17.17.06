@@ -39,12 +39,13 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
     
     var delegateToSelectQuizTypeViewController: SelectQuizTypeViewController?
     
-    var glosArray:[Lista] = []
+    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
     
+    var glosArray:[Lista] = []
     
     var settingsAppLanguageUppdate:String?
     
-    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
+
     
     
     

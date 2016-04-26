@@ -103,23 +103,18 @@ class QuizTestType12ViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
-    
-    
     //MARK: SET UP SETTINGS APPLanguage
     func setUpSettingsAppLanguage(){
-            if settingsAppLanguageUppdate == "Svenska" &&  settingsAppLanguageUppdate == nil {
-                ButtonShowAnswerOutlet.setTitle("lägg till", forState: .Normal)
+            if settingsAppLanguageUppdate == "Svenska" ||  settingsAppLanguageUppdate == nil {
+                ButtonShowAnswerOutlet.setTitle("rätta", forState: .Normal)
                 ButtonRedoOutlet.setTitle("gör om", forState: .Normal)
             }
-            if settingsAppLanguageUppdate == "English"{
-                ButtonShowAnswerOutlet.setTitle("add", forState: .Normal)
+            if settingsAppLanguageUppdate == "English" {
+                ButtonShowAnswerOutlet.setTitle("correct", forState: .Normal)
                 ButtonRedoOutlet.setTitle("redo", forState: .Normal)
             }
     }
 
-    
-    
-    
     //:MARK ANIMATIONS CUSTOM CELL
     override func viewWillAppear(animated: Bool) {
         animateTable()
@@ -154,12 +149,12 @@ class QuizTestType12ViewController: UIViewController, UITableViewDataSource, UIT
     //:MARK NAVIGATIONS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "ShowSynonim" {
-            let VC = segue.destinationViewController as? SynonimViewController
+        if segue.identifier == "Showsynonym" {
+            let VC = segue.destinationViewController as? SynonymViewController
             if let cell = sender as? UITableViewCell {
                 if let indexPath = TableView.indexPathForCell(cell) {
-                    //skickar ordet som ska sökas synonim till->
-                    VC?.synonimWord = String(AllaGlosListorArray!.glosListorArray[indexPath.row].word1)
+                    //skickar ordet som ska sökas synonym till->
+                    VC?.synonymWord = String(AllaGlosListorArray!.glosListorArray[indexPath.row].word1)
                 }
             }
         }

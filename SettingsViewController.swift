@@ -88,6 +88,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         settingsAppLanguage = LanguageSeetings[row]
+        self.delgatedLoadingViewController?.changeLanguage(settingsAppLanguage,soundSettigs:sound)
         PickerView.reloadAllComponents()
         self.setUpSettingsAppLanguage()
     }
@@ -96,6 +97,8 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
     
     
     //MARK: ACTION
@@ -108,16 +111,13 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
             print("sound off")
         }
         sound = false
-        print(sound)
         self.delgatedLoadingViewController?.changeLanguage(settingsAppLanguage,soundSettigs:sound)
-        print(settingsAppLanguage)
     }
 
     
     
     @IBAction func ButtonSoundOnAction(sender: UIButton) {
-        if sound == false {
-            print(sound)
+     if sound == false {
         if settingsAppLanguage == "English" {
             LabelSoundInfo.text = "sound on"
             print("sound on")
@@ -125,10 +125,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
         if settingsAppLanguage == "Svenska" {
            LabelSoundInfo.text = "ljud på"
         }
-        }
-        sound = true
-        self.delgatedLoadingViewController?.changeLanguage(settingsAppLanguage,soundSettigs:sound)
-        print(settingsAppLanguage)
+     }
+     sound = true
+     self.delgatedLoadingViewController?.changeLanguage(settingsAppLanguage,soundSettigs:sound)
     }
     
 

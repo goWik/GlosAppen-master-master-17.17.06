@@ -32,7 +32,7 @@
 		878ED2351CCE9B2D00109D2A /* MyFormatedClassElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ED2341CCE9B2D00109D2A /* MyFormatedClassElements.swift */; };
 		87F140711CCAA4EE0097AA85 /* mySound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87F140701CCAA4EE0097AA85 /* mySound.wav */; };
 		87F140751CCB41F40097AA85 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F140741CCB41F40097AA85 /* SettingsViewController.swift */; };
-		87F85FA11CAAC7DF007F4EBF /* SynonimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */; };
+		87F85FA11CAAC7DF007F4EBF /* SynonymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F85FA01CAAC7DF007F4EBF /* SynonymViewController.swift */; };
 		87F85FA31CAAE4F9007F4EBF /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +76,7 @@
 		878ED2341CCE9B2D00109D2A /* MyFormatedClassElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFormatedClassElements.swift; sourceTree = "<group>"; };
 		87F140701CCAA4EE0097AA85 /* mySound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mySound.wav; sourceTree = "<group>"; };
 		87F140741CCB41F40097AA85 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
-		87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynonimViewController.swift; sourceTree = "<group>"; };
+		87F85FA01CAAC7DF007F4EBF /* SynonymViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynonymViewController.swift; sourceTree = "<group>"; };
 		87F85FA21CAAE4F9007F4EBF /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; tabWidth = 3; wrapsLines = 1; };
 /* End PBXFileReference section */
 
@@ -126,7 +126,7 @@
 				1F3808221CA27E340018BBC5 /* QuizTest12 */,
 				1FF77D691CA5980F00F6BE2C /* QuizTest21 */,
 				1FF77D6A1CA5982600F6BE2C /* QuizTestMixed */,
-				8775D2491CCA596E006FB861 /* Synonimer */,
+				8775D2491CCA596E006FB861 /* Synonymer */,
 				8775D2451CCA1539006FB861 /* Sound */,
 				1F60E3A61C91823200E5A8A4 /* glosorTests */,
 				1F60E3901C91823200E5A8A4 /* Products */,
@@ -229,12 +229,12 @@
 			path = glosor;
 			sourceTree = "<group>";
 		};
-		8775D2491CCA596E006FB861 /* Synonimer */ = {
+		8775D2491CCA596E006FB861 /* Synonymer */ = {
 			isa = PBXGroup;
 			children = (
-				87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */,
+				87F85FA01CAAC7DF007F4EBF /* SynonymViewController.swift */,
 			);
-			name = Synonimer;
+			name = Synonymer;
 			path = glosor;
 			sourceTree = "<group>";
 		};
@@ -393,7 +393,7 @@
 				87F140751CCB41F40097AA85 /* SettingsViewController.swift in Sources */,
 				878ED2351CCE9B2D00109D2A /* MyFormatedClassElements.swift in Sources */,
 				1F7437F41C9D881300F80E44 /* SelectQuizTypeViewController.swift in Sources */,
-				87F85FA11CAAC7DF007F4EBF /* SynonimViewController.swift in Sources */,
+				87F85FA11CAAC7DF007F4EBF /* SynonymViewController.swift in Sources */,
 				1F3808261CA28CE50018BBC5 /* CustomCellQuizType12TableViewCell.swift in Sources */,
 				1FCC370E1C9A8A7400C9083F /* CreateAListViewController.swift in Sources */,
 				874850421CAC7C9C009267C3 /* HelpViewController.swift in Sources */,

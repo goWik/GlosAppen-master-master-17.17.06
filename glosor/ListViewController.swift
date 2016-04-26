@@ -88,7 +88,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.TextLabelOutlet.text = AllaGlosListorArray[indexPath.row].name
 
         for cell in cells {
-            if settingsAppLanguageUppdate == "Svenska" {
+            if settingsAppLanguageUppdate == "Svenska" || settingsAppLanguageUppdate == nil {
                 cell.TextLabelDatum.text = ("Listan skapad: \(helperStruct.dateFormatter())")
             }
             if settingsAppLanguageUppdate == "English"{
@@ -167,6 +167,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let VC = segue.destinationViewController as? LoadingViewController
             VC?.AllaGlosListorArray = String(AllaGlosListorArray)
         }
+        
+        /*let VC = storyboard?.instantiateViewControllerWithIdentifier("ShowHelp") as! HelpViewController
+        if segue.identifier == "ShowHelp" {
+            let VC = segue.destinationViewController as? LoadingViewController
+            VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+            print(settingsAppLanguageUppdate)
+        }*/
         
     }
     
@@ -258,6 +265,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func ButtonHelpAction(sender: UIBarButtonItem) {
     
         let VC = storyboard?.instantiateViewControllerWithIdentifier("ShowHelp") as! HelpViewController
+        VC.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+        
         //formeterar popover
         VC.preferredContentSize = CGSize(width: 350, height: 600)
         

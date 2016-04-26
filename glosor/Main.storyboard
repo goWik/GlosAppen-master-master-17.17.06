@@ -781,7 +781,6 @@
         <!--Settings View Controller-->
         <scene sceneID="jDQ-Ql-Mfx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vXv-iY-T9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Settings" id="bTx-23-wbH" customClass="SettingsViewController" customModule="glosor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HCP-lP-r0t"/>
@@ -897,6 +896,7 @@
                         <outlet property="ViewPicker" destination="YT5-HW-Vtw" id="6hK-lg-QbF"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXv-iY-T9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1887" y="-776"/>
         </scene>
@@ -1118,13 +1118,13 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xt5-TL-jfb">
-                                        <rect key="frame" x="19" y="80" width="560" height="30"/>
+                                        <rect key="frame" x="19" y="80" width="561" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UrJ-qE-v8b">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="561" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="namn på gloslistan" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dIv-Tm-YXb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="561" height="30"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -1198,7 +1198,7 @@
                                     <constraint firstItem="ddW-i9-VQv" firstAttribute="leading" secondItem="fxf-gS-xrk" secondAttribute="leading" constant="19" id="AtQ-DC-Nr8"/>
                                     <constraint firstAttribute="trailing" secondItem="xN8-OJ-dXO" secondAttribute="trailing" constant="20" id="BNk-Al-tHq"/>
                                     <constraint firstItem="xN8-OJ-dXO" firstAttribute="top" secondItem="ddW-i9-VQv" secondAttribute="bottom" constant="20" id="EhF-hg-Hyc"/>
-                                    <constraint firstAttribute="trailing" secondItem="Xt5-TL-jfb" secondAttribute="trailing" constant="21" id="Fiu-t5-WvR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xt5-TL-jfb" secondAttribute="trailing" constant="20" id="Fiu-t5-WvR"/>
                                     <constraint firstItem="ddW-i9-VQv" firstAttribute="top" secondItem="Xt5-TL-jfb" secondAttribute="bottom" constant="20" id="MD3-IZ-tFs"/>
                                     <constraint firstItem="Xt5-TL-jfb" firstAttribute="leading" secondItem="fxf-gS-xrk" secondAttribute="leading" constant="19" id="U0A-Ba-94D"/>
                                     <constraint firstAttribute="trailing" secondItem="IRw-SF-GSX" secondAttribute="trailing" constant="21" id="XmW-cf-GMe"/>
