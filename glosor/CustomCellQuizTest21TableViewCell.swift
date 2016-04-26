@@ -30,7 +30,6 @@ class CustomCellQuizTest21TableViewCell: UITableViewCell, UITextFieldDelegate {
         self.TheTranslatedWord.delegate = self
         WordToTranslate.textColor = UIColor.blackColor()
         TheTranslatedWord.textColor = UIColor.blackColor()
-        TheTranslatedWord.placeholder = "ditt svar"
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {

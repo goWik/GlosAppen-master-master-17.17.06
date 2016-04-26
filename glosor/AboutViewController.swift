@@ -30,15 +30,13 @@ class AboutViewController: UIViewController {
     
     
     func setUpSettingsAppLanguage(){
-        if settingsAppLanguageUppdate! == "Svenska" {
+        if settingsAppLanguageUppdate == "Svenska" || settingsAppLanguageUppdate == nil {
             TextView.text = "Att lära sig ett nytt språk kräver mycket tid, oftast flera år, en bra studieteknik och rätt hjälpmedel. Även att komma igång med skriftspråket i modersmålet kan ibland vara ganska svårt oavsett förutsättningar.\r\n Med rätt ”verktyg” kan inlärningsprocessen förenklas. Gloslistor- appen riktar sig mot nybörjare i ett eller flera språk lika så till dig som behöver hjälp att komma igång med skriftspråket och/eller öva på stavningen. Med hjälp av olika förhörsmetoder kan du på ett enkelt sätt träna på nya ord, begrepp och stavning."
         }
-        if settingsAppLanguageUppdate! == "English"{
+        if settingsAppLanguageUppdate == "English" {
             TextView.text =  "text på engelska...."
         }
-        if settingsAppLanguageUppdate! == "Polska" {
-            TextView.text = "text po polsku "
-        }
+       
     }
     
 

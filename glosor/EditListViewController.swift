@@ -44,49 +44,28 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
     
     var settingsAppLanguageUppdate:String?
     
-    
-    let myColor = UIColor(red: 160.0/255.0, green: 41.0/255.0, blue: 117.0/255.0, alpha: 1.0)
+    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpSettingsAppLanguage()
-            
-        //Formatterar button----
-        ButtonAddOutlet.layer.cornerRadius = 8
-        ButtonAddOutlet.layer.borderWidth = 1
-        ButtonAddOutlet.layer.borderColor = myColor.CGColor
-        
-        //-- linjer--
-        self.formated_TextFiled(TextFiledListName)
-        self.formated_TextFiled(TextFieldLanguage1)
-        self.formated_TextFiled(TextFieldLanguage2)
-        self.formated_TextFiled(TextFieldWord1)
-        self.formated_TextFiled(TextFieldWord2)
-
+        self.myFormatedClassElements.Button_formatedSmallButton(ButtonAddOutlet)
+        self.myFormatedClassElements.formated_TextFiled(TextFiledListName)
+        self.myFormatedClassElements.formated_TextFiled(TextFieldLanguage1)
+        self.myFormatedClassElements.formated_TextFiled(TextFieldLanguage2)
+        self.myFormatedClassElements.formated_TextFiled(TextFieldWord1)
+        self.myFormatedClassElements.formated_TextFiled(TextFieldWord2)
         self.TextFiledListName.delegate = self
         self.TextFieldLanguage1.delegate = self
         self.TextFieldLanguage2.delegate = self
         self.TextFieldWord1.delegate = self
         self.TextFieldWord2.delegate = self
-        
         self.setStatiskaDelar()
         TableView.reloadData()
     }
-    
-    
-    
-    func formated_TextFiled(textField:UITextField){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:textField.frame.size.width, height: textField.frame.size.height)
-        border.borderWidth = width
-        textField.layer.addSublayer(border)
-        textField.textColor = UIColor.blackColor()
-    }
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,25 +100,15 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
             updateList.title = "update"
             ButtonAddOutlet.setTitle("add", forState: .Normal)
             TextFiledListName.placeholder = "list name"
-            TextFieldLanguage1.placeholder = "Language1"
-            TextFieldLanguage2.placeholder = "Language2"
+            TextFieldLanguage1.placeholder = "language1"
+            TextFieldLanguage2.placeholder = "language2"
             TextFieldWord1.placeholder = "word1"
             TextFieldWord2.placeholder = "word2"
-        }
-        if settingsAppLanguageUppdate == "Polska" {
-            title = "redaguj slowka"
-            updateList.title = "odnow"
-            ButtonAddOutlet.setTitle("dodaj", forState: .Normal)
-            TextFiledListName.placeholder = "nazwa listy"
-            TextFieldLanguage1.placeholder = "jezyk1"
-            TextFieldLanguage2.placeholder = "jezyk2"
-            TextFieldWord1.placeholder = "slowo1"
-            TextFieldWord2.placeholder = "slowo2"
         }
     }
     
     
-    //sätter gammalt data till elemnts som ska visas när vyn laddas
+    //sätter gammalt data till elemnets som ska visas när vyn laddas
     func setStatiskaDelar(){
         TextFiledListName.text = AllaGlosListorArray!.name
         TextFieldLanguage1.text = AllaGlosListorArray!.language1
@@ -231,8 +200,6 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
             
             //SKAPAR OBJ VID KANPTYCKET OCH SKICKAR OBJ TILL NÄSTA VYN-------
             let listDescribeObj = ListDescribe(name: TextFiledListName.text!, language1:TextFieldLanguage1.text!, language2:TextFieldLanguage2.text!, glosListorArray: AllaGlosListorArray!.glosListorArray)
-            
-             // print("namn: \(listDescribeObj.name), språk1: \(listDescribeObj.language1), språk2: \(listDescribeObj.language2), glosListaArray: :\(listDescribeObj.glosListorArray)")
             
             delegate?.addObjPropertyToArray(listDescribeObj)//körs från listViewController
          }

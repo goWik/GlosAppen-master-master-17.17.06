@@ -42,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PtI-u8-cby" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1944" y="-526"/>
+            <point key="canvasLocation" x="3208" y="-662"/>
         </scene>
         <!--dina listor-->
         <scene sceneID="tne-QT-ifu">
@@ -163,7 +163,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2187" y="89"/>
+            <point key="canvasLocation" x="2385" y="89"/>
         </scene>
         <!--skapa listan-->
         <scene sceneID="XTp-WG-RUz">
@@ -534,7 +534,7 @@
                                             <constraint firstAttribute="height" constant="40" id="NK2-iF-jfY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="rätta">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.58823529409999997" green="0.05714530197" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
@@ -544,7 +544,7 @@
                                             <constraint firstAttribute="height" constant="40" id="FE5-wb-Iz9"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="gör om">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.58823529409999997" green="0.05714530197" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -776,11 +776,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qb2-NY-qdu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="-1"/>
+            <point key="canvasLocation" x="356" y="-113"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="jDQ-Ql-Mfx">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXv-iY-T9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Settings" id="bTx-23-wbH" customClass="SettingsViewController" customModule="glosor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HCP-lP-r0t"/>
@@ -790,93 +791,114 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vWx-2g-8Wg">
-                                <rect key="frame" x="0.0" y="400" width="600" height="200"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fx2-qR-YOh">
+                                <rect key="frame" x="30" y="52" width="540" height="30"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vJ5-QS-2Pv">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="J9f-mz-pSF">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="30"/>
                                         <subviews>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJu-IH-wwe">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="tjw-Bs-w10"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="bTx-23-wbH" id="cma-v3-SYK"/>
-                                                    <outlet property="delegate" destination="bTx-23-wbH" id="Xqe-XU-JzP"/>
-                                                </connections>
-                                            </pickerView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BL9-t3-2zU">
-                                <rect key="frame" x="20" y="101" width="560" height="31"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivy-hO-iKV">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ljud" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4T-C1-7Je">
-                                                <rect key="frame" x="0.0" y="0.0" width="511" height="31"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ljud på" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQE-DC-dB4">
+                                                <rect key="frame" x="0.0" y="0.0" width="540" height="30"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UtN-MB-sOl">
-                                                <rect key="frame" x="511" y="0.0" width="51" height="31"/>
-                                            </switch>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ygp-MJ-4hU"/>
+                                </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rrd-vF-tWV">
-                                <rect key="frame" x="20" y="329" width="560" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Bm-SJ-kpI">
+                                <rect key="frame" x="30" y="102" width="540" height="40"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qYv-Eo-Org">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8a7-BH-mY0">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYH-ZR-Jq2">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="fI8-xt-A9C"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                <state key="normal" title="ok">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="au5-Ux-85j">
+                                                <rect key="frame" x="0.0" y="0.0" width="263" height="40"/>
+                                                <state key="normal" image="soundOff.png"/>
                                                 <connections>
-                                                    <action selector="ButtonOKAction:" destination="bTx-23-wbH" eventType="touchUpInside" id="M4w-GO-Y87"/>
+                                                    <action selector="ButtonSoundOfAction:" destination="bTx-23-wbH" eventType="touchUpInside" id="F4U-vl-rFN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdi-Pk-na8">
+                                                <rect key="frame" x="278" y="0.0" width="262" height="40"/>
+                                                <state key="normal" image="soundOn.png"/>
+                                                <connections>
+                                                    <action selector="ButtonSoundOnAction:" destination="bTx-23-wbH" eventType="touchUpInside" id="7Xw-Am-NP1"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="McG-rb-bO6"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PrW-77-FUs">
+                                <rect key="frame" x="30" y="430" width="540" height="150"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vWx-2g-8Wg">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="150"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vJ5-QS-2Pv">
+                                                <rect key="frame" x="0.0" y="0.0" width="540" height="150"/>
+                                                <subviews>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aJu-IH-wwe">
+                                                        <rect key="frame" x="0.0" y="0.0" width="540" height="150"/>
+                                                        <color key="tintColor" red="0.98289259900000003" green="0.98289259900000003" blue="0.98289259900000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="HaX-mB-8qt"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="bTx-23-wbH" id="cma-v3-SYK"/>
+                                                            <outlet property="delegate" destination="bTx-23-wbH" id="Xqe-XU-JzP"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="liS-PX-mTt">
+                                        <rect key="frame" x="0.0" y="150" width="540" height="0.0"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YT5-HW-Vtw">
+                                                <rect key="frame" x="0.0" y="0.0" width="540" height="0.0"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="U2R-ZR-cqC"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="BL9-t3-2zU" firstAttribute="top" secondItem="HCP-lP-r0t" secondAttribute="bottom" constant="81" id="Bat-JH-PQd"/>
-                            <constraint firstAttribute="trailing" secondItem="BL9-t3-2zU" secondAttribute="trailing" constant="20" id="Dvd-7d-oN2"/>
-                            <constraint firstItem="Odp-Pr-Tpd" firstAttribute="top" secondItem="vWx-2g-8Wg" secondAttribute="bottom" id="O0P-xh-bOp"/>
-                            <constraint firstItem="vWx-2g-8Wg" firstAttribute="leading" secondItem="wnh-x2-mn4" secondAttribute="leading" id="PFD-mC-HPi"/>
-                            <constraint firstItem="Rrd-vF-tWV" firstAttribute="leading" secondItem="wnh-x2-mn4" secondAttribute="leading" constant="20" id="Pyh-E4-ja0"/>
-                            <constraint firstItem="vWx-2g-8Wg" firstAttribute="top" secondItem="Rrd-vF-tWV" secondAttribute="bottom" constant="31" id="XpM-e8-ixi"/>
-                            <constraint firstAttribute="trailing" secondItem="vWx-2g-8Wg" secondAttribute="trailing" id="faT-iB-8Kj"/>
-                            <constraint firstAttribute="trailing" secondItem="Rrd-vF-tWV" secondAttribute="trailing" constant="20" id="sMD-NU-Jqj"/>
-                            <constraint firstItem="BL9-t3-2zU" firstAttribute="leading" secondItem="wnh-x2-mn4" secondAttribute="leading" constant="20" id="yPZ-7z-7Oh"/>
+                            <constraint firstAttribute="trailing" secondItem="4Bm-SJ-kpI" secondAttribute="trailing" constant="30" id="CL6-I4-jLT"/>
+                            <constraint firstAttribute="trailing" secondItem="fx2-qR-YOh" secondAttribute="trailing" constant="30" id="Fk8-gj-Izr"/>
+                            <constraint firstItem="4Bm-SJ-kpI" firstAttribute="leading" secondItem="wnh-x2-mn4" secondAttribute="leading" constant="30" id="ObT-ht-reU"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="PrW-77-FUs" secondAttribute="bottom" constant="20" id="UsL-AZ-eSr"/>
+                            <constraint firstItem="fx2-qR-YOh" firstAttribute="leading" secondItem="wnh-x2-mn4" secondAttribute="leading" constant="30" id="VKq-H1-fD9"/>
+                            <constraint firstItem="PrW-77-FUs" firstAttribute="leading" secondItem="wnh-x2-mn4" secondAttribute="leading" constant="30" id="ble-Y5-Cqd"/>
+                            <constraint firstItem="4Bm-SJ-kpI" firstAttribute="top" secondItem="HCP-lP-r0t" secondAttribute="bottom" constant="82" id="g4n-E4-qsA"/>
+                            <constraint firstItem="fx2-qR-YOh" firstAttribute="top" secondItem="4Bm-SJ-kpI" secondAttribute="bottom" constant="-90" id="kNe-js-Crj"/>
+                            <constraint firstAttribute="trailing" secondItem="PrW-77-FUs" secondAttribute="trailing" constant="30" id="sCT-eP-iuF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SMJ-RB-0v6"/>
                     <connections>
-                        <outlet property="ButtonOKOutlet" destination="qYH-ZR-Jq2" id="7pt-mh-4FA"/>
-                        <outlet property="LabelAudio" destination="b4T-C1-7Je" id="Zfw-bs-kqp"/>
+                        <outlet property="ButtonSoundOffOutlet" destination="au5-Ux-85j" id="kcx-4Y-uXA"/>
+                        <outlet property="ButtonSoundOnOutlet" destination="Rdi-Pk-na8" id="qIa-fg-I9K"/>
+                        <outlet property="LabelSoundInfo" destination="zQE-DC-dB4" id="oyN-50-XYM"/>
                         <outlet property="PickerView" destination="aJu-IH-wwe" id="gFX-bb-fah"/>
-                        <outlet property="Switch" destination="UtN-MB-sOl" id="2kQ-I6-yIJ"/>
                         <outlet property="TableView" destination="wnh-x2-mn4" id="lBq-9p-G3K"/>
+                        <outlet property="ViewPicker" destination="YT5-HW-Vtw" id="6hK-lg-QbF"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vXv-iY-T9h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1143" y="-740"/>
+            <point key="canvasLocation" x="1887" y="-776"/>
         </scene>
         <!--synonim-->
         <scene sceneID="eSb-0m-Lws">
@@ -934,7 +956,7 @@
                                             <constraint firstAttribute="height" constant="40" id="bqG-dp-Zfw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="rätta">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.58823529409999997" green="0.05714530197" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
@@ -944,7 +966,7 @@
                                             <constraint firstAttribute="height" constant="40" id="bA2-7k-uJG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="gör om">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.58823529409999997" green="0.05714530197" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -1374,7 +1396,7 @@
                                             <constraint firstAttribute="height" constant="40" id="rln-MN-2oF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="rätta">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.58823529409999997" green="0.05714530197" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
@@ -1386,7 +1408,7 @@
                                             <constraint firstAttribute="height" constant="40" id="tHG-iO-CWZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="gör om">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.58823529409999997" green="0.0" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <variation key="default">
@@ -1517,9 +1539,11 @@
         <image name="i.png" width="32" height="32"/>
         <image name="icon.png" width="318" height="84"/>
         <image name="settings.png" width="25" height="25"/>
+        <image name="soundOff.png" width="25" height="25"/>
+        <image name="soundOn.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uej-Al-BfI"/>
-        <segue reference="WIA-iB-e5N"/>
+        <segue reference="Xw4-Aa-wUd"/>
     </inferredMetricsTieBreakers>
 </document>

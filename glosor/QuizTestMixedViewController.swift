@@ -32,7 +32,11 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
     
     var helperStruct:HelperStruct = HelperStruct()
     
+    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
+    
     var settingsAppLanguageUppdate:String?
+    
+    var soundSettigsApp:Bool?
     
  
     
@@ -50,18 +54,13 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         //kör func här, notificationCenter lägger till Observer och samtidigt körs adjustForKeyboard med namn: WILLCHANGE
         notificationCenter.addObserver(self, selector: #selector(QuizTest21ViewController.adjustForKeyboard(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
         
-        formated_Button(ButtonRedoOutlet)
-        formated_Button(ButtonShowAnswerOutlet)
+        self.myFormatedClassElements.formated_ButtonSelectQuizButton(ButtonShowAnswerOutlet)
+        self.myFormatedClassElements.formated_ButtonSelectQuizButton(ButtonRedoOutlet)
     
         TableView.delegate = self
         
     }
-    //MARK: MY FORMADE BUTTON
-    func formated_Button(button:UIButton){
-        button.layer.cornerRadius = 6
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(red: 160.0/255.0, green: 41.0/255.0, blue: 117.0/255.0, alpha: 1.0).CGColor
-    }
+
     
      override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -104,6 +103,13 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
                     print("defoult")
             }
         }
+        
+        if settingsAppLanguageUppdate == "Svenska" || settingsAppLanguageUppdate == nil {
+            cell.TheTranslatedWord.placeholder = "ditt svar"
+        }
+        if settingsAppLanguageUppdate == "English" {
+            cell.TheTranslatedWord.placeholder = "your answer"
+        }
 
         ButtonShowAnswerOutlet.addTarget(self, action: #selector(QuizTestMixedViewController.ButtonShowAnswer(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -115,26 +121,17 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
     
     //MARK: SET UP SETTINGS APPLanguage
     func setUpSettingsAppLanguage(){
-        for cell in cells {
             if settingsAppLanguageUppdate == "Svenska" {
                 title = "blandat"
                 ButtonShowAnswerOutlet.setTitle("lägg till", forState: .Normal)
                 ButtonRedoOutlet.setTitle("gör om", forState: .Normal)
-                cell.TheTranslatedWord.placeholder = "ditt svar"
+
             }
             if settingsAppLanguageUppdate == "English"{
                 title = "mixed"
                 ButtonShowAnswerOutlet.setTitle("add", forState: .Normal)
                 ButtonRedoOutlet.setTitle("redo", forState: .Normal)
-                cell.TheTranslatedWord.placeholder = "your answer"
             }
-            if settingsAppLanguageUppdate == "Polska" {
-                title = "mieszane"
-                ButtonShowAnswerOutlet.setTitle("dodaj", forState: .Normal)
-                ButtonRedoOutlet.setTitle("zrob jeszcze raz", forState: .Normal)
-                cell.TheTranslatedWord.placeholder = "twoja odopwiedz"
-            }
-        }
     }
 
     
@@ -157,8 +154,10 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         }
         for myCell in cells {
             let mycell: UITableViewCell = myCell as UITableViewCell
-            //kör animationen:
-            self.helperStruct.playAudio() //ljudet spelas upp samtigit som animationen körs
+            if soundSettigsApp == true || soundSettigsApp == nil {
+                self.helperStruct.playAudio() //ljudet spelas upp samtigit som animationene körs
+            }
+
             UIView.animateWithDuration(0.8, delay:0.03, usingSpringWithDamping: 1, initialSpringVelocity: 0,
                                        options: .LayoutSubviews, animations: {
                                         mycell.transform = CGAffineTransformMakeTranslation(0, 0);

@@ -33,10 +33,15 @@ class SelectQuizTypeViewController: UIViewController {
     
     @IBOutlet weak var VCTitel: UINavigationItem!
     
-
+    
+    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
+    
     var AllaGlosListorArray:ListDescribe?
     
     var settingsAppLanguageUppdate:String?
+    
+    var soundSettigsApp:Bool?
+    
 
 
     override func viewDidLoad() {
@@ -49,27 +54,17 @@ class SelectQuizTypeViewController: UIViewController {
         ButtonSelectQuizLanguage12Outlet.setTitle("\(AllaGlosListorArray!.language1) \(AllaGlosListorArray!.language2)", forState: UIControlState.Normal)
      
         ButtonSelectQuizLanguage21Outlet.setTitle("\(AllaGlosListorArray!.language2) \(AllaGlosListorArray!.language1)", forState: UIControlState.Normal)
-  
-        formated_myButton(ButtonEditListOutlet)
-        formated_myButton(ButtonSelectQuizLanguage12Outlet)
-        formated_myButton(ButtonSelectQuizLanguage21Outlet)
-        formated_myButton(ButtonSelecktQuizBothLanguage)
+        self.myFormatedClassElements.Button_formatedButton(ButtonEditListOutlet)
+        self.myFormatedClassElements.Button_formatedButton(ButtonSelectQuizLanguage12Outlet)
+        self.myFormatedClassElements.Button_formatedButton(ButtonSelectQuizLanguage21Outlet)
+        self.myFormatedClassElements.Button_formatedButton(ButtonSelecktQuizBothLanguage)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
-    //MARK: MY BUTTONS FORMETED
-    func formated_myButton(button:UIButton){
-        button.layer.cornerRadius = 10
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.whiteColor().CGColor
-    }
-    
-    
-    
+
     func setUpSettingsAppLanguage(){
         if settingsAppLanguageUppdate == "Svenska" {
             ButtonEditListOutlet.setTitle("redigera", forState: UIControlState.Normal)
@@ -79,10 +74,6 @@ class SelectQuizTypeViewController: UIViewController {
         if settingsAppLanguageUppdate == "English"{
             ButtonEditListOutlet.setTitle("edit", forState: UIControlState.Normal)
             ButtonSelecktQuizBothLanguage.setTitle("mixed", forState: .Normal)
-        }
-        if settingsAppLanguageUppdate == "Polska" {
-            ButtonEditListOutlet.setTitle("redaguj", forState: UIControlState.Normal)
-            ButtonSelecktQuizBothLanguage.setTitle("mieszana", forState: .Normal)
         }
     }
 
@@ -94,12 +85,14 @@ class SelectQuizTypeViewController: UIViewController {
             let VC = segue.destinationViewController as? EditListViewController
             VC?.AllaGlosListorArray = AllaGlosListorArray
             VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+            
         }
         
         if segue.identifier == "QuizTest12" {
             let VC = segue.destinationViewController as? QuizTestType12ViewController
             VC?.AllaGlosListorArray = AllaGlosListorArray
             VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+            VC?.soundSettigsApp = soundSettigsApp
         }
         
         if segue.identifier == "QuizTest21" {
@@ -107,6 +100,7 @@ class SelectQuizTypeViewController: UIViewController {
             QuizTest21ViewController
             VC?.AllaGlosListorArray = AllaGlosListorArray
             VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+            VC?.soundSettigsApp = soundSettigsApp
         }
         
         if segue.identifier == "QuizTestMixed" {
@@ -114,6 +108,7 @@ class SelectQuizTypeViewController: UIViewController {
             QuizTestMixedViewController
             VC?.AllaGlosListorArray = AllaGlosListorArray
             VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+            VC?.soundSettigsApp = soundSettigsApp
         }
     }
 

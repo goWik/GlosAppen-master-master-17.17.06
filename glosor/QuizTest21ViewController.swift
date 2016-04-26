@@ -32,28 +32,27 @@ class QuizTest21ViewController: UIViewController , UITableViewDelegate, UITableV
     
     var helperStruct:HelperStruct = HelperStruct()
     
+    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
+    
     var settingsAppLanguageUppdate:String?
+    
+     var soundSettigsApp:Bool?
 
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "\(AllaGlosListorArray!.language2)-\(AllaGlosListorArray!.language1)"
-        
-        
         self.setUpSettingsAppLanguage()
-        //lyssnare
+
         let notificationCenter = NSNotificationCenter.defaultCenter()
         
-        //kör func här, notificationCenter lägger till Observer och samtidigt körs adjustForKeyboard med namn: HIDE
         notificationCenter.addObserver(self, selector: #selector(QuizTest21ViewController.adjustForKeyboard(_:)), name: UIKeyboardWillHideNotification, object: nil)
-        
-        //kör func här, notificationCenter lägger till Observer och samtidigt körs adjustForKeyboard med namn: WILLCHANGE
+
         notificationCenter.addObserver(self, selector: #selector(QuizTest21ViewController.adjustForKeyboard(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
-   
-        formated_Button(ButtonShowAnswerOutlet)
-        formated_Button(ButtonRedoOutlet)
         
+        self.myFormatedClassElements.formated_ButtonSelectQuizButton(ButtonShowAnswerOutlet)
+        self.myFormatedClassElements.formated_ButtonSelectQuizButton(ButtonRedoOutlet)
         TableView.delegate = self
     }
     
@@ -61,15 +60,7 @@ class QuizTest21ViewController: UIViewController , UITableViewDelegate, UITableV
         super.didReceiveMemoryWarning()
 
     }
-    
-    
-    //MARK: MY FORMADE BUTTON
-    func formated_Button(button:UIButton){
-        button.layer.cornerRadius = 6
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(red: 160.0/255.0, green: 41.0/255.0, blue: 117.0/255.0, alpha: 1.0).CGColor
-    }
-    
+  
     //:MARK PROTOKOLLS FUNCKTIONS
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (AllaGlosListorArray?.glosListorArray.count)!
@@ -82,29 +73,16 @@ class QuizTest21ViewController: UIViewController , UITableViewDelegate, UITableV
     
     //MARK: SET UP SETTINGS APPLanguage
     func setUpSettingsAppLanguage(){
-        for cell in cells {
             if settingsAppLanguageUppdate == "Svenska" {
                 ButtonShowAnswerOutlet.setTitle("lägg till", forState: .Normal)
                 ButtonRedoOutlet.setTitle("gör om", forState: .Normal)
-                cell.TheTranslatedWord.placeholder = "ditt svar"
             }
             if settingsAppLanguageUppdate == "English"{
                 ButtonShowAnswerOutlet.setTitle("add", forState: .Normal)
-                ButtonRedoOutlet.setTitle("reddo", forState: .Normal)
-                cell.TheTranslatedWord.placeholder = "your answer"
+                ButtonRedoOutlet.setTitle("redo", forState: .Normal)
             }
-            if settingsAppLanguageUppdate == "Polska" {
-                ButtonShowAnswerOutlet.setTitle("dodaj", forState: .Normal)
-                ButtonRedoOutlet.setTitle("zrob jeszcze raz", forState: .Normal)
-                cell.TheTranslatedWord.placeholder = "twoja odpowiedz"
-            }
-        }
     }
 
-    
-    
-    
-    
     //:MARK CUSTOM CELL
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -118,6 +96,13 @@ class QuizTest21ViewController: UIViewController , UITableViewDelegate, UITableV
         }
         
         cell.WordToTranslate.text = AllaGlosListorArray!.glosListorArray[indexPath.row].word2
+        
+        if settingsAppLanguageUppdate == "Svenska" || settingsAppLanguageUppdate == nil {
+            cell.TheTranslatedWord.placeholder = "ditt svar"
+        }
+        if settingsAppLanguageUppdate == "English" {
+            cell.TheTranslatedWord.placeholder = "your answer"
+        }
         
         ButtonShowAnswerOutlet.addTarget(self, action: #selector(QuizTest21ViewController.ButtonShowAnswer(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -134,17 +119,19 @@ class QuizTest21ViewController: UIViewController , UITableViewDelegate, UITableV
     func animateTable() { //animerar celler:
         TableView.reloadData()
         
-        let myCell_ = TableView.visibleCells //deklarerar en myCell typen UITableViewCell på existerande rowen
-        let screenHeight:CGFloat = TableView.bounds.size.height //anger mått för hight tabel
+        _ = TableView.visibleCells
+        let screenHeight:CGFloat = TableView.bounds.size.height
         
         for myCell in cells { //loppar igenom cells Arraygen
-            let myCell:UITableViewCell = myCell as UITableViewCell //cell lika med UITableViewCell
-            myCell.transform = CGAffineTransformMakeTranslation(0, screenHeight)//så hög är skärmen
+            let myCell:UITableViewCell = myCell as UITableViewCell
+            myCell.transform = CGAffineTransformMakeTranslation(0, screenHeight)
         }
         for myCell in cells {
             let mycell: UITableViewCell = myCell as UITableViewCell
-            //kör animationen:
-            self.helperStruct.playAudio() //ljudet spelas upp samtigit som animationen körs
+            if soundSettigsApp == true || soundSettigsApp == nil {
+                self.helperStruct.playAudio()
+            }
+
             UIView.animateWithDuration(0.8, delay:0.03, usingSpringWithDamping: 1, initialSpringVelocity: 0,
                                        options: .LayoutSubviews, animations: {
                                         mycell.transform = CGAffineTransformMakeTranslation(0, 0);
@@ -161,7 +148,6 @@ class QuizTest21ViewController: UIViewController , UITableViewDelegate, UITableV
             let VC = segue.destinationViewController as? SynonimViewController
             if let cell = sender as? UITableViewCell {
                 if let indexPath = TableView.indexPathForCell(cell) {
-                    //skickar ordet som ska sökas synonim till->
                     VC?.synonimWord = String(AllaGlosListorArray!.glosListorArray[indexPath.row].word2)
                 }
             }

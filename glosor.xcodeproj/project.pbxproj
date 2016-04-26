@@ -29,6 +29,7 @@
 		876D9CF31CA71AE500555AC8 /* EditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876D9CF21CA71AE500555AC8 /* EditListViewController.swift */; };
 		876D9CF51CA71BE600555AC8 /* CustomCellEditListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876D9CF41CA71BE600555AC8 /* CustomCellEditListTableViewCell.swift */; };
 		8775D2441CCA1417006FB861 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8775D2431CCA1417006FB861 /* AVFoundation.framework */; };
+		878ED2351CCE9B2D00109D2A /* MyFormatedClassElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878ED2341CCE9B2D00109D2A /* MyFormatedClassElements.swift */; };
 		87F140711CCAA4EE0097AA85 /* mySound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87F140701CCAA4EE0097AA85 /* mySound.wav */; };
 		87F140751CCB41F40097AA85 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F140741CCB41F40097AA85 /* SettingsViewController.swift */; };
 		87F85FA11CAAC7DF007F4EBF /* SynonimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */; };
@@ -72,6 +73,7 @@
 		876D9CF21CA71AE500555AC8 /* EditListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListViewController.swift; sourceTree = "<group>"; };
 		876D9CF41CA71BE600555AC8 /* CustomCellEditListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellEditListTableViewCell.swift; sourceTree = "<group>"; };
 		8775D2431CCA1417006FB861 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		878ED2341CCE9B2D00109D2A /* MyFormatedClassElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFormatedClassElements.swift; sourceTree = "<group>"; };
 		87F140701CCAA4EE0097AA85 /* mySound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mySound.wav; sourceTree = "<group>"; };
 		87F140741CCB41F40097AA85 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 		87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynonimViewController.swift; sourceTree = "<group>"; };
@@ -104,13 +106,28 @@
 				1F3808201CA27E230018BBC5 /* QuizTestType12ViewController.swift */,
 			);
 			name = QuizTest12;
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		1F60E3861C91823200E5A8A4 = {
 			isa = PBXGroup;
 			children = (
 				8775D2431CCA1417006FB861 /* AVFoundation.framework */,
-				1F60E3911C91823200E5A8A4 /* glosor */,
+				1F60E3911C91823200E5A8A4 /* StoryBoard */,
+				878ED2301CCD347600109D2A /* AppDelegate */,
+				878ED2361CCF54AD00109D2A /* MyFormated */,
+				8775D2481CCA2740006FB861 /* Data Model */,
+				87F140761CCB43BD0097AA85 /* LoadningsScrren */,
+				878ED2311CCD34DA00109D2A /* Settings */,
+				1FCC37151C9AE69A00C9083F /* All List */,
+				1FCC37111C9A9F4D00C9083F /* CreateList */,
+				877C38931CA8867F005DF952 /* EditList */,
+				1F7437F51C9D882100F80E44 /* SelectQuizType */,
+				1F3808221CA27E340018BBC5 /* QuizTest12 */,
+				1FF77D691CA5980F00F6BE2C /* QuizTest21 */,
+				1FF77D6A1CA5982600F6BE2C /* QuizTestMixed */,
+				8775D2491CCA596E006FB861 /* Synonimer */,
+				8775D2451CCA1539006FB861 /* Sound */,
 				1F60E3A61C91823200E5A8A4 /* glosorTests */,
 				1F60E3901C91823200E5A8A4 /* Products */,
 			);
@@ -125,26 +142,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1F60E3911C91823200E5A8A4 /* glosor */ = {
+		1F60E3911C91823200E5A8A4 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
 				874F211C1CB2836A0020987F /* Main.storyboard */,
-				878ED2311CCD34DA00109D2A /* Settings */,
-				878ED2301CCD347600109D2A /* AppDelegate */,
-				87F140761CCB43BD0097AA85 /* LoadningsScrren */,
-				8775D2481CCA2740006FB861 /* Data Model */,
-				1FCC37151C9AE69A00C9083F /* All List */,
-				1F7437F51C9D882100F80E44 /* SelectQuizType */,
-				8775D2491CCA596E006FB861 /* Synonimer */,
-				1FCC37111C9A9F4D00C9083F /* CreateList */,
-				877C38931CA8867F005DF952 /* EditList */,
-				1F3808221CA27E340018BBC5 /* QuizTest12 */,
-				1FF77D691CA5980F00F6BE2C /* QuizTest21 */,
-				1FF77D6A1CA5982600F6BE2C /* QuizTestMixed */,
 				1F60E3991C91823200E5A8A4 /* Assets.xcassets */,
 				1F60E39B1C91823200E5A8A4 /* LaunchScreen.storyboard */,
 				1F60E39E1C91823200E5A8A4 /* Info.plist */,
 			);
+			name = StoryBoard;
 			path = glosor;
 			sourceTree = "<group>";
 		};
@@ -163,7 +169,6 @@
 				1F7437F31C9D881300F80E44 /* SelectQuizTypeViewController.swift */,
 			);
 			name = SelectQuizType;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		1FCC37111C9A9F4D00C9083F /* CreateList */ = {
@@ -173,7 +178,6 @@
 				1FCC370D1C9A8A7400C9083F /* CreateAListViewController.swift */,
 			);
 			name = CreateList;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		1FCC37151C9AE69A00C9083F /* All List */ = {
@@ -184,6 +188,7 @@
 				1F60E3B21C91833600E5A8A4 /* ListViewController.swift */,
 			);
 			name = "All List";
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		1FF77D691CA5980F00F6BE2C /* QuizTest21 */ = {
@@ -193,6 +198,7 @@
 				1FF77D651CA593D800F6BE2C /* QuizTest21ViewController.swift */,
 			);
 			name = QuizTest21;
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		1FF77D6A1CA5982600F6BE2C /* QuizTestMixed */ = {
@@ -200,17 +206,18 @@
 			children = (
 				1FF77D6D1CA59A7D00F6BE2C /* CustomCellQuizTestMixedTableViewCell.swift */,
 				1FF77D671CA5948E00F6BE2C /* QuizTestMixedViewController.swift */,
-				8775D2451CCA1539006FB861 /* Musik */,
 			);
 			name = QuizTestMixed;
+			path = glosor;
 			sourceTree = "<group>";
 		};
-		8775D2451CCA1539006FB861 /* Musik */ = {
+		8775D2451CCA1539006FB861 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
 				87F140701CCAA4EE0097AA85 /* mySound.wav */,
 			);
-			name = Musik;
+			name = Sound;
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		8775D2481CCA2740006FB861 /* Data Model */ = {
@@ -219,6 +226,7 @@
 				1FCC36DD1C95E12400C9083F /* Lista.swift */,
 			);
 			name = "Data Model";
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		8775D2491CCA596E006FB861 /* Synonimer */ = {
@@ -227,6 +235,7 @@
 				87F85FA01CAAC7DF007F4EBF /* SynonimViewController.swift */,
 			);
 			name = Synonimer;
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		877C38931CA8867F005DF952 /* EditList */ = {
@@ -236,6 +245,7 @@
 				876D9CF21CA71AE500555AC8 /* EditListViewController.swift */,
 			);
 			name = EditList;
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		878ED2301CCD347600109D2A /* AppDelegate */ = {
@@ -244,6 +254,7 @@
 				1F60E3921C91823200E5A8A4 /* AppDelegate.swift */,
 			);
 			name = AppDelegate;
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		878ED2311CCD34DA00109D2A /* Settings */ = {
@@ -252,6 +263,16 @@
 				87F140741CCB41F40097AA85 /* SettingsViewController.swift */,
 			);
 			name = Settings;
+			path = glosor;
+			sourceTree = "<group>";
+		};
+		878ED2361CCF54AD00109D2A /* MyFormated */ = {
+			isa = PBXGroup;
+			children = (
+				878ED2341CCE9B2D00109D2A /* MyFormatedClassElements.swift */,
+			);
+			name = MyFormated;
+			path = glosor;
 			sourceTree = "<group>";
 		};
 		87F140761CCB43BD0097AA85 /* LoadningsScrren */ = {
@@ -261,6 +282,7 @@
 				8748503F1CAC6D6C009267C3 /* AboutViewController.swift */,
 			);
 			name = LoadningsScrren;
+			path = glosor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +391,7 @@
 				876D9CF51CA71BE600555AC8 /* CustomCellEditListTableViewCell.swift in Sources */,
 				1FCC37141C9AA0BC00C9083F /* CreateCustomCellListTableViewCell.swift in Sources */,
 				87F140751CCB41F40097AA85 /* SettingsViewController.swift in Sources */,
+				878ED2351CCE9B2D00109D2A /* MyFormatedClassElements.swift in Sources */,
 				1F7437F41C9D881300F80E44 /* SelectQuizTypeViewController.swift in Sources */,
 				87F85FA11CAAC7DF007F4EBF /* SynonimViewController.swift in Sources */,
 				1F3808261CA28CE50018BBC5 /* CustomCellQuizType12TableViewCell.swift in Sources */,
@@ -535,7 +558,6 @@
 		1F60E3B01C91823200E5A8A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = glosorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mw.com.glosorTests;
@@ -547,7 +569,6 @@
 		1F60E3B11C91823200E5A8A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = glosorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mw.com.glosorTests;

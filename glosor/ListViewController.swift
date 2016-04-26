@@ -38,6 +38,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     var settingsAppLanguageUppdate:String?
+    
+    var soundSettigsApp:Bool?
 
     var toShare:String = ""
     
@@ -77,24 +79,20 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = TableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CellTableViewCell
         
         if cells.count < AllaGlosListorArray.count {
-            cells.append(cell)//lägg till celler i arragen bara förtsa gången func. körs
+            cells.append(cell)
         }
-        if cells.count >= 0 { //lägg ej flera celler
+        if cells.count >= 0 {
             print("lägg ej flera celler")
         }
       
         cell.TextLabelOutlet.text = AllaGlosListorArray[indexPath.row].name
-        //cell.TextLabelDatum.text = ("Listan skapad: \(helperStruct.dateFormatter())")
-        
+
         for cell in cells {
             if settingsAppLanguageUppdate == "Svenska" {
                 cell.TextLabelDatum.text = ("Listan skapad: \(helperStruct.dateFormatter())")
             }
             if settingsAppLanguageUppdate == "English"{
                 cell.TextLabelDatum.text = ("List created: \(helperStruct.dateFormatter())")
-            }
-            if settingsAppLanguageUppdate == "Polska" {
-                cell.TextLabelDatum.text = ("Lista utworzona: \(helperStruct.dateFormatter())")
             }
         }
 
@@ -130,19 +128,13 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func setUpSettingsAppLanguage(){
-            if settingsAppLanguageUppdate == "Svenska" {
-                title = "dina listor"
-                NavBarItem.title = "skapa"
-                //cell.TextLabelDatum.text = ("Listan skapad: \(helperStruct.dateFormatter())")
-            }
-            if settingsAppLanguageUppdate == "English"{
-                title = "your lists"
-                NavBarItem.title = "create"
-                //cell.TextLabelDatum.text = ("List created: \(helperStruct.dateFormatter())")
-            }
-            if settingsAppLanguageUppdate == "Polska" {
-                title = "twoje listy slowek"
-                NavBarItem.title = "utworz"
+        if settingsAppLanguageUppdate == "Svenska" {
+            title = "dina listor"
+            NavBarItem.title = "skapa"
+        }
+        if settingsAppLanguageUppdate == "English"{
+            title = "your lists"
+            NavBarItem.title = "create"
         }
     }
     
@@ -166,9 +158,16 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 if let indexPath = TableView.indexPathForCell(cell) {
                     VC?.AllaGlosListorArray = AllaGlosListorArray[indexPath.row] //skickar data som ligger i respektive cell till  SelectQuiz Vyn
                     VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+                    VC?.soundSettigsApp = soundSettigsApp
                     }
             }
         }
+        
+        if segue.identifier == "GoTo" {
+            let VC = segue.destinationViewController as? LoadingViewController
+            VC?.AllaGlosListorArray = String(AllaGlosListorArray)
+        }
+        
     }
     
     
@@ -180,7 +179,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func animateTable() { //animerar celler:
         TableView.reloadData()
         
-        let myCell = TableView.visibleCells //deklarerar en myCell typen UITableViewCell på existerande rowen
+        _ = TableView.visibleCells //deklarerar en myCell typen UITableViewCell på existerande rowen
         let screenHeight:CGFloat = TableView.bounds.size.height //anger mått för hight tabel
         
         for myCell in cells { //loppar igenom cells Arraygen
@@ -191,20 +190,19 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //loppar igenom cellsArraygen som populerar celler
         for myCell in cells {
             let mycell: UITableViewCell = myCell as UITableViewCell //deklarerar en myCell typen UITableViewCell på existerande rowen
+         
             
-            //kör animationen:
-            self.helperStruct.playAudio() //ljudet spelas upp samtigit som animationene körs
+            if soundSettigsApp == true || soundSettigsApp == nil {
+                self.helperStruct.playAudio()
+            }
+            
             UIView.animateWithDuration(0.9, delay:0.03, usingSpringWithDamping: 1, initialSpringVelocity: 0,
                                        options: .LayoutSubviews, animations: {
                                         mycell.transform = CGAffineTransformMakeTranslation(0, 0);
                 }, completion: nil)
         
         }
-        //duration:NSTimeInterval:-tid, interval
-        //delay:NstimeInterval: snabhet->tid,interval
-        //usingSpringWithDamping:dämpnig Float
-        //options: enum (finns flea att välja mellan)
-        //animation: transform....
+     
     }
     
     // MARK: SAHRE CONTENT
@@ -221,25 +219,25 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         let delete = UITableViewRowAction(style: .Destructive, title: "Delete") { (action, indexPath) in
                 let alert = UIAlertController(title: "Vill ta bort listan?", message: "tryck på JA för att radera", preferredStyle: .Alert)
-            let taBort =  UIAlertAction(title: "JA", style: UIAlertActionStyle.Destructive) {
+            let taBort =  UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive) {
                 (UIAlertAction) -> Void in
                 //datan tas bort....
                 self.AllaGlosListorArray.removeAtIndex(indexPath.row)//från indexPath
                 self.TableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)//animation
             }
             
-            let cancel = UIAlertAction(title: "NEJ", style: .Cancel, handler: nil)
+            let cancel = UIAlertAction(title: "NO", style: .Cancel, handler: nil)
             //alertAction
             alert.addAction(cancel)
             alert.addAction(taBort)
             self.presentViewController(alert, animated: true,completion: nil)
         }
-         
-    
-        //SHARE LIST--------------------------------------
-        let share = UITableViewRowAction(style: .Normal, title: "dela") { (action, indexPath) in
+
+    //SHARE LIST-------------------------------------- cell
+       let share = UITableViewRowAction(style: .Normal, title: "Share") { (action, indexPath) in
             
        //en loop som konverterar min datatyp:Lista till String för att kunna skriva ut- DELA utan hackparanteser
+        
         for var i = 0; i <= self.AllaGlosListorArray[indexPath.row].glosListorArray.count - 1; i += 1 {
             let content = String(self.AllaGlosListorArray[indexPath.row].glosListorArray[i])
             self.toShare = self.toShare + " " + content
@@ -248,7 +246,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             self.toShare = ""
         }
-
         share.backgroundColor = UIColor.darkGrayColor()
     
     return [delete,share]

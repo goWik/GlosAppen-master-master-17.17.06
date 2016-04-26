@@ -45,39 +45,32 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
     
     var glosArray:[Lista] = [] //här läggs det till objGlosa-objekt
 
-    
     var delegateListViewController:ListViewController?
-    
     
     var cells:[CreateCustomCellListTableViewCell] = []
     
-    
+    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
+
     var settingsAppLanguageUppdate:String?
     
-    let myColor = UIColor(red: 160.0/255.0, green: 41.0/255.0, blue: 117.0/255.0, alpha: 1.0)
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSettingsAppLanguage()
-        
-        ButtonAddToListOutlet.layer.cornerRadius = 8
-        ButtonAddToListOutlet.layer.borderWidth = 1
-        ButtonAddToListOutlet.layer.borderColor = myColor.CGColor
-        
+        self.myFormatedClassElements.Button_formatedSmallButton(ButtonAddToListOutlet)
         self.TextFieldLanguage1.delegate = self
         self.TextFiledListName.delegate = self
         self.TextFiledLabelLanguage2.delegate = self
         self.TextFieldWord1.delegate = self
         self.TextFieldWord2.delegate = self
-        
-        formated_TextFiled(TextFiledListName)
-        formated_TextFiled(TextFieldLanguage1)
-        formated_TextFiled(TextFiledLabelLanguage2)
-        formated_TextFiled(TextFieldWord1)
-        formated_TextFiled(TextFieldWord2)
-  
+        self.myFormatedClassElements.formated_TextFiled(TextFiledListName)
+        self.myFormatedClassElements.formated_TextFiled(TextFieldLanguage1)
+        self.myFormatedClassElements.formated_TextFiled(TextFiledLabelLanguage2)
+        self.myFormatedClassElements.formated_TextFiled(TextFieldWord1)
+        self.myFormatedClassElements.formated_TextFiled(TextFieldWord2)
         tableView.reloadData()
     }
     
@@ -104,34 +97,9 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
             TextFieldWord1.placeholder = "word1"
             TextFieldWord2.placeholder = "word2"
         }
-        if settingsAppLanguageUppdate == "Polska" {
-            title = "utwoz liste"
-            SaveOutlet.title = "gotowe"
-            ButtonAddToListOutlet.setTitle("dodaj", forState: .Normal)
-            TextFiledListName.placeholder = "nazwa listy"
-            TextFieldLanguage1.placeholder = "jezyk1"
-            TextFiledLabelLanguage2.placeholder = "jezyk2"
-            TextFieldWord1.placeholder = "slowo1"
-            TextFieldWord2.placeholder = "slowo2"
-        }
     }
    
-    
-    
-   
-    //MARK: MY FORMAED TEXTFIELD
-    func formated_TextFiled(textField:UITextField){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        textField.layer.masksToBounds = true
-        border.borderColor = UIColor.lightGrayColor().CGColor
-        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:textField.frame.size.width, height: textField.frame.size.height)
-        border.borderWidth = width
-        textField.layer.addSublayer(border)
-        textField.textColor = UIColor.blackColor()
-    }
-    
-    
+
     //:MARK TEXTFILED
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         TextFieldLanguage1.resignFirstResponder()
@@ -181,10 +149,9 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        //cellen tas bort
-        if editingStyle == .Delete { //enum:  .Delate
-         self.glosArray.removeAtIndex(indexPath.row)
-         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        if editingStyle == .Delete {
+            self.glosArray.removeAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
     

@@ -17,6 +17,7 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
     
     @IBOutlet weak var NavBarItemOutlet: UIBarButtonItem!
     
+    
  
     var delegateSettingsViewController:SettingsViewController?
     
@@ -25,7 +26,11 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
     var delegateListViewController:ListViewController?
     
     
+    var AllaGlosListorArray:String?
+    
     var settingsAppLanguageUppdate:String?
+    
+    var soundSettigsApp:Bool?
     
     
     
@@ -36,10 +41,10 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
     }
     
     
-    func changeLanguage(settingsAppLanguage:String){
+    func changeLanguage(settingsAppLanguage:String, soundSettigs:Bool){
         print(settingsAppLanguage) //er språk
         settingsAppLanguageUppdate = settingsAppLanguage
-        print(" FRÅN LV \(settingsAppLanguageUppdate)")
+        soundSettigsApp = soundSettigs
     }
     
     
@@ -72,6 +77,7 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
         if segue.identifier == "GoTo" {
             let VC = segue.destinationViewController as? ListViewController
             VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
+            VC?.soundSettigsApp = soundSettigsApp
         }
         
 
