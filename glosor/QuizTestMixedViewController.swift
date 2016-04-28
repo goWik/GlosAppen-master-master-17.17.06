@@ -87,14 +87,15 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         if cells.count < AllaGlosListorArray?.glosListorArray.count {
             cells.append(cell)
         }
-        
         if cells.count >= 0 {
             print("lägg ej flera celler")
         }
         
+        
        //vilkor för blandat:
        for var i = 0; i <= AllaGlosListorArray?.glosListorArray.count; i += 1 {
-            switch  Int(arc4random_uniform(UInt32(AllaGlosListorArray!.glosListorArray.count))) {
+    
+        switch  Int(arc4random_uniform(UInt32(AllaGlosListorArray!.glosListorArray.count))) {
                 case 0 :
                     cell.WordToTranslate.text =  String(AllaGlosListorArray!.glosListorArray[indexPath.row].word1)
                 case 1 :
@@ -125,7 +126,6 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
                 title = "blandat"
                 ButtonShowAnswerOutlet.setTitle("rätta", forState: .Normal)
                 ButtonRedoOutlet.setTitle("gör om", forState: .Normal)
-
             }
             if settingsAppLanguageUppdate == "English"{
                 title = "mixed"
@@ -154,7 +154,8 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         }
         for myCell in cells {
             let mycell: UITableViewCell = myCell as UITableViewCell
-            if soundSettigsApp == true || soundSettigsApp == nil {
+            
+           if soundSettigsApp == true || soundSettigsApp == nil {
                 self.helperStruct.playAudio() //ljudet spelas upp samtigit som animationene körs
             }
 
@@ -169,7 +170,7 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
     //:MARK NAVIGATIONS:
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "Showsynonym" {
+        if segue.identifier == "ShowSynonym" {
             let VC = segue.destinationViewController as? SynonymViewController
             if let cell = sender as? UITableViewCell {
                 if let indexPath = TableView.indexPathForCell(cell) {

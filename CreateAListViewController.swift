@@ -19,9 +19,7 @@
 import UIKit
 
 class CreateAListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-    //protokollen: UITableViewDataSource, UITableViewDelegate
-    
-    
+
     //:MARK ELEMENTS
     @IBOutlet weak var TextFiledListName: UITextField!
     
@@ -40,23 +38,19 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var SaveOutlet: UIBarButtonItem!
     
     
-  
+    var delegateListViewController:ListViewController?
+    
     let helperStruct:HelperStruct = HelperStruct()
     
     var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
     
-    var glosArray:[Lista] = [] //här läggs det till objGlosa-objekt
+    var glosArray:[Lista] = []
 
-    var delegateListViewController:ListViewController?
-    
     var cells:[CreateCustomCellListTableViewCell] = []
     
     var settingsAppLanguageUppdate:String?
     
 
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSettingsAppLanguage()
@@ -92,15 +86,15 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
             SaveOutlet.title = "done"
             ButtonAddToListOutlet.setTitle("add", forState: .Normal)
             TextFiledListName.placeholder = "list name"
-            TextFieldLanguage1.placeholder = "Language1"
-            TextFiledLabelLanguage2.placeholder = "Language2"
+            TextFieldLanguage1.placeholder = "language1"
+            TextFiledLabelLanguage2.placeholder = "language2"
             TextFieldWord1.placeholder = "word1"
             TextFieldWord2.placeholder = "word2"
         }
     }
    
 
-    //:MARK TEXTFILED
+    //MARK: TEXTFILED
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         TextFieldLanguage1.resignFirstResponder()
         TextFiledListName.resignFirstResponder()
@@ -116,7 +110,7 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
      }
     
     
-    //:MARK PROTOKOLS FUNCKTIONS
+    //MARK: PROTOKOLS FUNCKTIONS
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return glosArray.count
     }
@@ -126,7 +120,7 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    //:MARK CUSTOM CELL
+    //MARK: CUSTOM CELL
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CellList", forIndexPath: indexPath) as! CreateCustomCellListTableViewCell
@@ -156,7 +150,7 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
 
-    //:MARK ACTIONS
+    //MARK: ACTIONS
     @IBAction func ButtonAddObject(sender: UIButton) {
         
         TextFieldWord1.text! = TextFieldWord1.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -164,10 +158,10 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
         
        if TextFieldWord1.text! != "" && TextFieldWord2.text! != "" && TextFieldLanguage1.text! != "" && TextFiledLabelLanguage2.text! != "" {
            
-            //SKAPAR ETT OBJEKT VID KNAPPTRYCK ---LÄGG TILL---------------
-            let glosaObj:Lista = Lista(word1: TextFieldWord1.text!, word2: TextFieldWord2.text!)
+        //ett obj. skapas vid action ButtonAddObject
+        let glosaObj:Lista = Lista(word1: TextFieldWord1.text!, word2: TextFieldWord2.text!)
             glosArray.append(glosaObj)
-        print(glosArray)
+            print(glosArray)
         
        } else {
         let alert = UIAlertController(title: "alert", message: "Kontrollera om alla fälten är fyllda. Namnet på din gloslista, Ord1 och Ord2", preferredStyle: UIAlertControllerStyle.Alert)
@@ -177,12 +171,12 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
 
-        //ALERT FÖR BEGRESNING AV 10 ORD-----
+        // begrensgning av 10 ord
           if glosArray.count >= 10 {
                 let alert = UIAlertController(title: "alert", message: "Du kan skapa en lista med 10 ord", preferredStyle: UIAlertControllerStyle.Alert )
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(action) in
                     
-                self.ButtonSaveAction(self.SaveOutlet)//körs då 10 ord är ifylda
+                self.ButtonSaveAction(self.SaveOutlet)
             }))
            
             self.presentViewController(alert, animated: true, completion: nil)
@@ -193,7 +187,7 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
         
         }
 
-    // aktion för spara hela listan och skicka till föregånde vy där listan läggs till i "AllaGloListorArragen"
+    //MARK: hela glosListan sparas
     @IBAction func ButtonSaveAction(sender: UIBarButtonItem) {
         
         //blanka tecken i inputen tas bort
@@ -210,7 +204,7 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
             print("namn: \(listDescribeObj.name), språk1: \(listDescribeObj.language1), språk2: \(listDescribeObj.language2), glosListaArray: :\(listDescribeObj.glosListorArray)")
             
          delegateListViewController?.addObjPropertyToArray(listDescribeObj)//kör func från klassen ListViewController då listDescribeObj läggs till i AllaGloslitorArrayen
-            print("skdekjdfjbfgfsh")
+
             
         } else {
         let alert = UIAlertController(title: "alert", message: "Kontrollera om alla fälten är fyllda. Namnet på din gloslista, Ord1 och Ord2", preferredStyle: UIAlertControllerStyle.Alert)

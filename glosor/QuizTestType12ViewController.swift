@@ -134,7 +134,7 @@ class QuizTestType12ViewController: UIViewController, UITableViewDataSource, UIT
         for myCell in cells {
             let mycell: UITableViewCell = myCell as UITableViewCell //deklarerar en myCell typen UITableViewCell på existerande rowen
             if soundSettigsApp == true || soundSettigsApp == nil {
-                self.helperStruct.playAudio()
+                self.helperStruct.playAudio() //ljudet spelas upp samtigit som animationene körs
             }
 
             UIView.animateWithDuration(0.8, delay:0.03, usingSpringWithDamping: 1, initialSpringVelocity: 0,
@@ -149,7 +149,7 @@ class QuizTestType12ViewController: UIViewController, UITableViewDataSource, UIT
     //:MARK NAVIGATIONS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "Showsynonym" {
+        if segue.identifier == "ShowSynonym" {
             let VC = segue.destinationViewController as? SynonymViewController
             if let cell = sender as? UITableViewCell {
                 if let indexPath = TableView.indexPathForCell(cell) {

@@ -41,14 +41,16 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
     }
     
     
+    
+    //MARK: MY FUNKTION
+    //func skickar paramterar: språk och ljud
     func changeLanguage(settingsAppLanguage:String, soundSettigs:Bool){
-        print(settingsAppLanguage) //er språk
         settingsAppLanguageUppdate = settingsAppLanguage
         soundSettigsApp = soundSettigs
     }
     
     
-   //:MARK ANIMATE IMAGE
+   //MARK: ANIMATE IMAGE
    override func viewWillAppear(animated: Bool) {
         ImageToAnimation.center.y -= view.bounds.width//neråt
     }
@@ -66,39 +68,34 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
     
     
     
-    //MARK NAVIGATION
+    //MARK: NAVIGATION
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Settings" {
             let VC = segue.destinationViewController as? SettingsViewController
             VC?.delgatedLoadingViewController = self
         }
-        
-        
         if segue.identifier == "GoTo" {
             let VC = segue.destinationViewController as? ListViewController
             VC?.settingsAppLanguageUppdate = settingsAppLanguageUppdate
             VC?.soundSettigsApp = soundSettigsApp
         }
-        
-
     }
     
     
    
-    //:MARK ACTIONS
+    //MARK: ACTIONS:
+    
     @IBAction func SwipeGR(sender: UISwipeGestureRecognizer) {
-        performSegueWithIdentifier("GoTo", sender: settingsAppLanguageUppdate)
+         performSegueWithIdentifier("GoTo", sender: settingsAppLanguageUppdate)
     }
     
-    
-    //:MARK ACTIONS
     @IBAction func ButtonShowInfo(sender: UIBarButtonItem) {
     
     let VC = storyboard?.instantiateViewControllerWithIdentifier("ShowInfo") as! AboutViewController
         VC.settingsAppLanguageUppdate = settingsAppLanguageUppdate
         
-        //Formatterar custom popover
-        VC.preferredContentSize = CGSize(width: 350 , height: 330)
+        //Formaterar my custom popover
+        VC.preferredContentSize = CGSize(width: 350 , height: 400)
         let navController =  UINavigationController(rootViewController: VC)
         
         navController.modalPresentationStyle = UIModalPresentationStyle.Popover

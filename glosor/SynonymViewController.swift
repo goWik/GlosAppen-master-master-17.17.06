@@ -14,15 +14,10 @@ import UIKit
 
 class SynonymViewController: UIViewController {
     
-    //:MARK ELEMENTS
+    //MARK: ELEMENTS
     @IBOutlet weak var WebView: UIWebView!
-  
-    @IBOutlet weak var VCTitle: UINavigationItem!
-    
-    
-   
-    var synonymWord:String?//ordet som ska sökas efter
-    
+
+    var synonymWord:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()

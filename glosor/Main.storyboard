@@ -18,12 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RosaOBackgraund.png" highlightedImage="RosaOBackgraund.png" translatesAutoresizingMaskIntoConstraints="NO" id="P9X-FL-eBK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P9X-FL-eBK">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.62698736363642382" green="0.057765440791473818" blue="0.42996173610474103" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kz0-jU-9U5">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="white" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kz0-jU-9U5">
                                 <rect key="frame" x="20" y="20" width="560" height="514"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -37,6 +38,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ImageView" destination="P9X-FL-eBK" id="hbq-nP-dnr"/>
                         <outlet property="TextView" destination="kz0-jU-9U5" id="v7d-IN-VaA"/>
                     </connections>
                 </viewController>
@@ -63,7 +65,7 @@
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="68" id="VG0-k8-O5a" customClass="CellTableViewCell" customModule="glosor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="68"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="VG0-k8-O5a" id="jRA-bd-eRo">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="67"/>
@@ -623,7 +625,7 @@
                                             <outlet property="ImageToShowResults" destination="G7v-X9-ld4" id="UM6-7A-05x"/>
                                             <outlet property="TheTranslatedWord" destination="Kun-QS-oLv" id="85U-dv-oVF"/>
                                             <outlet property="WordToTranslate" destination="Ej4-9C-bWa" id="KTQ-f0-4Nq"/>
-                                            <segue destination="b5g-qK-HSz" kind="show" identifier="ShowSynonim" id="WIA-iB-e5N"/>
+                                            <segue destination="b5g-qK-HSz" kind="show" identifier="ShowSynonym" id="WIA-iB-e5N"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -672,44 +674,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1oC-Gd-wbP">
-                                <rect key="frame" x="40" y="20" width="520" height="65"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXt-41-Smh">
+                                <rect key="frame" x="0.0" y="61" width="600" height="539"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r3j-Ku-ufZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="520" height="65"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1oC-Gd-wbP">
+                                        <rect key="frame" x="65" y="80" width="470" height="70"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" highlightedImage="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="tXi-44-oo6">
-                                                <rect key="frame" x="0.0" y="0.0" width="520" height="65"/>
-                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r3j-Ku-ufZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="470" height="70"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="tXi-44-oo6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="470" height="70"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="aQl-lz-Ruf"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="Lvw-dG-B5f"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
-                            </stackView>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="1oC-Gd-wbP" firstAttribute="leading" secondItem="aXt-41-Smh" secondAttribute="leading" constant="65" id="4eN-XE-j4F"/>
+                                    <constraint firstAttribute="bottom" secondItem="1oC-Gd-wbP" secondAttribute="bottom" constant="369" id="ezt-Tl-0iR"/>
+                                    <constraint firstAttribute="trailing" secondItem="1oC-Gd-wbP" secondAttribute="trailing" constant="65" id="jme-Lg-PJn"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="WUk-gt-NtR" appends="YES" id="srk-EB-nCv"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="1oC-Gd-wbP" firstAttribute="top" secondItem="GQo-EK-nDb" secondAttribute="top" constant="20" symbolic="YES" id="K6Y-g6-mZY"/>
-                            <constraint firstAttribute="trailing" secondItem="1oC-Gd-wbP" secondAttribute="trailing" constant="40" id="NKN-yn-Lyl"/>
-                            <constraint firstItem="1oC-Gd-wbP" firstAttribute="top" secondItem="rpG-aA-qHm" secondAttribute="bottom" constant="-44" id="ZHh-au-0VJ"/>
-                            <constraint firstItem="1oC-Gd-wbP" firstAttribute="leading" secondItem="GQo-EK-nDb" secondAttribute="leading" constant="40" id="k8Q-Uk-fY9"/>
-                            <constraint firstItem="1oC-Gd-wbP" firstAttribute="top" secondItem="GQo-EK-nDb" secondAttribute="top" id="khR-IE-aIX"/>
+                            <constraint firstItem="aXt-41-Smh" firstAttribute="leading" secondItem="GQo-EK-nDb" secondAttribute="leading" id="0Fc-vm-3nk"/>
+                            <constraint firstItem="aXt-41-Smh" firstAttribute="bottom" secondItem="67B-ko-z2A" secondAttribute="top" id="Uba-mo-ExW"/>
+                            <constraint firstAttribute="trailing" secondItem="aXt-41-Smh" secondAttribute="trailing" id="ZcK-JE-yL5"/>
+                            <constraint firstItem="aXt-41-Smh" firstAttribute="top" secondItem="GQo-EK-nDb" secondAttribute="topMargin" constant="61" id="nmn-bA-I8Z"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ZHh-au-0VJ"/>
-                                <exclude reference="khR-IE-aIX"/>
-                            </mask>
-                        </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="SbB-oj-wbz" appends="YES" id="NG9-Fi-x0Z"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="n3b-Tj-mGz">
-                        <barButtonItem key="leftBarButtonItem" image="i.png" id="lgO-qi-B0k">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" image="i.png" style="plain" id="lgO-qi-B0k">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="ButtonShowInfo:" destination="MBn-mD-boy" id="QIC-wW-yuP"/>
                             </connections>
@@ -730,9 +736,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1C4-pW-Jut" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="SbB-oj-wbz">
+                <swipeGestureRecognizer direction="left" id="WUk-gt-NtR">
                     <connections>
-                        <action selector="SwipeGR:" destination="MBn-mD-boy" id="5h2-lv-IJh"/>
+                        <action selector="SwipeGR:" destination="MBn-mD-boy" id="3Bj-qC-gfA"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -750,27 +756,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="330"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RosaOBackgraund.png" highlightedImage="RosaOBackgraund.png" translatesAutoresizingMaskIntoConstraints="NO" id="JmJ-PK-T2H">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JmJ-PK-T2H">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.62698736359999996" green="0.057765440789999997" blue="0.42996173609999999" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2IL-aq-PMD">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="white" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2IL-aq-PMD">
                                 <rect key="frame" x="21" y="28" width="307" height="269"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="N8F-ZU-G7f" firstAttribute="top" secondItem="2IL-aq-PMD" secondAttribute="bottom" constant="33" id="JT6-ib-aGr"/>
                             <constraint firstItem="2IL-aq-PMD" firstAttribute="leading" secondItem="XT2-Xw-wUX" secondAttribute="leadingMargin" constant="5" id="JaO-ZW-jTu"/>
-                            <constraint firstItem="N8F-ZU-G7f" firstAttribute="top" secondItem="2IL-aq-PMD" secondAttribute="bottom" constant="33" id="Oky-ty-dF0"/>
+                            <constraint firstItem="2IL-aq-PMD" firstAttribute="top" secondItem="FZ0-AN-cFg" secondAttribute="bottom" constant="8" id="TBE-3C-eyq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2IL-aq-PMD" secondAttribute="trailing" constant="6" id="bCh-n3-f6n"/>
-                            <constraint firstItem="2IL-aq-PMD" firstAttribute="top" secondItem="FZ0-AN-cFg" secondAttribute="bottom" constant="8" id="grc-y3-TK1"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="350" height="330"/>
                     <connections>
+                        <outlet property="ImageView" destination="JmJ-PK-T2H" id="Md7-rk-gGK"/>
+                        <outlet property="TableView" destination="XT2-Xw-wUX" id="kwt-Wv-vKX"/>
                         <outlet property="TextView" destination="2IL-aq-PMD" id="vKp-s6-3MA"/>
                     </connections>
                 </viewController>
@@ -900,10 +908,10 @@
             </objects>
             <point key="canvasLocation" x="1887" y="-776"/>
         </scene>
-        <!--synonim-->
+        <!--synonymer-->
         <scene sceneID="eSb-0m-Lws">
             <objects>
-                <viewController storyboardIdentifier="ShowSynonim" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b5g-qK-HSz" customClass="SynonimViewController" customModule="glosor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowSynonim" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b5g-qK-HSz" userLabel="synonymer" customClass="SynonymViewController" customModule="glosor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DN0-9M-oxO"/>
                         <viewControllerLayoutGuide type="bottom" id="6sL-Qi-gXW"/>
@@ -927,8 +935,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="synonim" id="0HX-3T-JXv"/>
                     <connections>
-                        <outlet property="VCTitle" destination="0HX-3T-JXv" id="8Ao-VA-BaA"/>
-                        <outlet property="WebView" destination="qTw-ho-Y10" id="PAN-oT-R1A"/>
+                        <outlet property="WebView" destination="qTw-ho-Y10" id="xHq-Iy-9T9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocq-Mz-8Qg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1044,7 +1051,7 @@
                                             <outlet property="ImageToShowResults" destination="7sl-89-VWa" id="VpN-du-ZAv"/>
                                             <outlet property="TheTranslatedWord" destination="CJd-6k-Z9T" id="3lr-B8-LtV"/>
                                             <outlet property="WordToTranslate" destination="uyf-G8-Gyp" id="Xg4-C4-hdN"/>
-                                            <segue destination="b5g-qK-HSz" kind="show" identifier="ShowSynonim" id="Jvh-ax-HWU"/>
+                                            <segue destination="b5g-qK-HSz" kind="show" identifier="ShowSynonym" id="Jvh-ax-HWU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1497,7 +1504,7 @@
                                             <outlet property="ImageToShow" destination="6We-pf-3Ld" id="RHP-1B-0qc"/>
                                             <outlet property="TheTranslatedWord" destination="aJ0-mf-fFP" id="vSy-1y-3Uy"/>
                                             <outlet property="WordToTranslate" destination="1p1-Du-8da" id="XcO-8j-onP"/>
-                                            <segue destination="b5g-qK-HSz" kind="show" identifier="ShowSynonim" id="Xw4-Aa-wUd"/>
+                                            <segue destination="b5g-qK-HSz" kind="show" identifier="ShowSynonym" id="Xw4-Aa-wUd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1534,7 +1541,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="RosaOBackgraund.png" width="621" height="1104"/>
         <image name="frage.png" width="32" height="32"/>
         <image name="i.png" width="32" height="32"/>
         <image name="icon.png" width="318" height="84"/>
@@ -1543,7 +1549,7 @@
         <image name="soundOn.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uej-Al-BfI"/>
+        <segue reference="EQM-bb-jqz"/>
         <segue reference="Xw4-Aa-wUd"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -69,7 +69,6 @@ class SelectQuizTypeViewController: UIViewController {
         if settingsAppLanguageUppdate == "Svenska" {
             ButtonEditListOutlet.setTitle("redigera", forState: UIControlState.Normal)
             ButtonSelecktQuizBothLanguage.setTitle("bandad", forState: .Normal)
-            
         }
         if settingsAppLanguageUppdate == "English"{
             ButtonEditListOutlet.setTitle("edit", forState: UIControlState.Normal)

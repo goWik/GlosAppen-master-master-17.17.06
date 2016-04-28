@@ -15,18 +15,22 @@ class AboutViewController: UIViewController {
     //:MARK ELEMENTS
     @IBOutlet weak var TextView: UITextView!
     
+    @IBOutlet weak var ImageView: UIImageView!
     
+    @IBOutlet var TableView: UIView!
+
     var settingsAppLanguageUppdate:String?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TextView.textColor = UIColor.whiteColor()
         self.setUpSettingsAppLanguage()
+        ImageView.backgroundColor = UIColor(patternImage: UIImage(named: "RosaOBackgraund.png")!)
+        TextView.textColor = UIColor.whiteColor()
+        
+        
     }
-    
-    
     
     func setUpSettingsAppLanguage(){
         if settingsAppLanguageUppdate == "Svenska" || settingsAppLanguageUppdate == nil {
@@ -35,7 +39,6 @@ class AboutViewController: UIViewController {
         if settingsAppLanguageUppdate == "English" {
             TextView.text =  "To learn a new language demands a lot of time, often several years, an effective way to study and the right tools. It is sometimes even hard to get started with the written language in your native language. The learning process can be made simpler with the right tools. The Gloslistor-app is for those that has just began to learn a new language as to those who just needs to practice spelling. With the help of different methods you are able to, in an easy way, practice on new words, synonyms and spelling."
         }
-       
     }
     
 

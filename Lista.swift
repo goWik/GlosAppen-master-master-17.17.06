@@ -11,7 +11,7 @@ import AVFoundation
 
 
 
-//:MARK PROTOKOLS
+//MARK: PROTOKOLS
 protocol ListProtokolType {
     
     var word1:String {get set}
@@ -34,7 +34,7 @@ protocol ListDescribeType {
 }
 
 
-//:MARK CLASSES
+//MARK: CLASSES
 class Lista: ListProtokolType , CustomStringConvertible {
 
     var word1:String
@@ -78,7 +78,7 @@ class ListDescribe: ListDescribeType, CustomStringConvertible {
 }
 
 
-//:MARK STRUCT
+//MARK: STRUCT
 struct HelperStruct {
     
   var audioFile = AVAudioPlayer()
@@ -95,7 +95,7 @@ struct HelperStruct {
             print("file not found")
         }
     }
-    
+
 
     func dateFormatter()-> String{
         let clock = NSDate()
