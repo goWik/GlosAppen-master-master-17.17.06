@@ -15,7 +15,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
     @IBOutlet weak var PickerView: UIPickerView!
     
     @IBOutlet var TableView: UIView!
-  
+    
     @IBOutlet weak var ButtonSoundOffOutlet: UIButton!
     
     @IBOutlet weak var ButtonSoundOnOutlet: UIButton!
@@ -28,7 +28,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
     
     var delgatedLoadingViewController:LoadingViewController?
     
-    let myFormatedClassElements:MyFormatedClassElements =  MyFormatedClassElements()
+    let myformattedClassElements:MyformattedClassElements =  MyformattedClassElements()
     
     let LanguageSeetings:[String] = ["Svenska", "English"]
     
@@ -37,15 +37,15 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
     var sound:Bool = true
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpSettingsAppLanguage()
         TableView.backgroundColor = UIColor(patternImage: UIImage(named: "RosaOBackgraund.png")!)
-        self.myFormatedClassElements.formated_view(ViewPicker)
-        self.myFormatedClassElements.formated_view(ButtonSoundOnOutlet)
-        self.myFormatedClassElements.formated_view(ButtonSoundOffOutlet)
-        self.myFormatedClassElements.formated_Label(LabelSoundInfo)
+        self.myformattedClassElements.formatted_view(ViewPicker)
+        self.myformattedClassElements.formatted_view(ButtonSoundOnOutlet)
+        self.myformattedClassElements.formatted_view(ButtonSoundOffOutlet)
+        self.myformattedClassElements.formatted_Label(LabelSoundInfo)
         PickerView.reloadAllComponents()
         
     }
@@ -69,9 +69,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
             }
         }
     }
-   
-
-    //MARK: PROTKOLOS FUNKTIONS
+    
+    
+    //MARK: PROTOCOLS FUNKTIONS
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -79,7 +79,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return  LanguageSeetings.count
     }
-
+    
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = LanguageSeetings[row]
         let myFormat = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Helvetica Neue", size: 17.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
@@ -92,7 +92,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
         PickerView.reloadAllComponents()
         self.setUpSettingsAppLanguage()
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,24 +113,24 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UITextFiel
         sound = false
         self.delgatedLoadingViewController?.changeLanguage(settingsAppLanguage,soundSettigs:sound)
     }
-
+    
     
     
     @IBAction func ButtonSoundOnAction(sender: UIButton) {
-     if sound == false {
-        if settingsAppLanguage == "English" {
-            LabelSoundInfo.text = "sound on"
-            print("sound on")
+        if sound == false {
+            if settingsAppLanguage == "English" {
+                LabelSoundInfo.text = "sound on"
+                print("sound on")
+            }
+            if settingsAppLanguage == "Svenska" {
+                LabelSoundInfo.text = "ljud på"
+            }
         }
-        if settingsAppLanguage == "Svenska" {
-           LabelSoundInfo.text = "ljud på"
-        }
-     }
-     sound = true
-     self.delgatedLoadingViewController?.changeLanguage(settingsAppLanguage,soundSettigs:sound)
+        sound = true
+        self.delgatedLoadingViewController?.changeLanguage(settingsAppLanguage,soundSettigs:sound)
     }
     
-
+    
 }
 
 

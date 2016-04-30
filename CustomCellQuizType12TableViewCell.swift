@@ -10,12 +10,12 @@ import UIKit
 
 class CustomCellQuizType12TableViewCell: UITableViewCell , UITextFieldDelegate {
     
+    //MARK: ELEMENTS
+    @IBOutlet weak var WordToTranslate: UITextField!
     
-   @IBOutlet weak var WordToTranslate: UITextField!
+    @IBOutlet weak var TheTranslatedWord: UITextField!
     
-   @IBOutlet weak var TheTranslatedWord: UITextField!
-    
-   @IBOutlet weak var ImageToShowResults: UIImageView!
+    @IBOutlet weak var ImageToShowResults: UIImageView!
     
     
     override func awakeFromNib() {
@@ -23,7 +23,7 @@ class CustomCellQuizType12TableViewCell: UITableViewCell , UITextFieldDelegate {
         ImageToShowResults.backgroundColor = UIColor(patternImage: UIImage(named: "checkMark.png")!)
         ImageToShowResults.hidden = true
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.WordToTranslate.delegate = self
@@ -36,7 +36,7 @@ class CustomCellQuizType12TableViewCell: UITableViewCell , UITextFieldDelegate {
         WordToTranslate.resignFirstResponder()
         TheTranslatedWord.resignFirstResponder()
         
-     return true
+        return true
     }
     
     

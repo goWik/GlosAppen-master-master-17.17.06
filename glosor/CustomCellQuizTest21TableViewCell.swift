@@ -10,7 +10,7 @@ import UIKit
 
 class CustomCellQuizTest21TableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    //elements i cellen
+    //MARK: ELEMENTS
     @IBOutlet weak var WordToTranslate: UITextField!
     
     @IBOutlet weak var TheTranslatedWord: UITextField!
@@ -23,7 +23,7 @@ class CustomCellQuizTest21TableViewCell: UITableViewCell, UITextFieldDelegate {
         ImageToShow.backgroundColor = UIColor(patternImage: UIImage(named: "checkMark.png")!)
         ImageToShow.hidden = true
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.WordToTranslate.delegate = self
@@ -31,16 +31,11 @@ class CustomCellQuizTest21TableViewCell: UITableViewCell, UITextFieldDelegate {
         WordToTranslate.textColor = UIColor.blackColor()
         TheTranslatedWord.textColor = UIColor.blackColor()
     }
-
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         WordToTranslate.resignFirstResponder()
         TheTranslatedWord.resignFirstResponder()
         return true
     }
     
-    
-    
-    
-
-
 }

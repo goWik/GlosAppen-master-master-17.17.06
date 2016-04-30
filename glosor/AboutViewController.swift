@@ -4,21 +4,20 @@
 //
 //  Created by gm on 2016-03-30.
 //  Copyright © 2016 gm. All rights reserved.
-//
-//klassen inehåller info om appen
+
 
 
 import UIKit
 
 class AboutViewController: UIViewController {
     
-    //:MARK ELEMENTS
+    //MARK: ELEMENTS
     @IBOutlet weak var TextView: UITextView!
     
     @IBOutlet weak var ImageView: UIImageView!
     
     @IBOutlet var TableView: UIView!
-
+    
     var settingsAppLanguageUppdate:String?
     
     
@@ -41,10 +40,10 @@ class AboutViewController: UIViewController {
         }
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-
+    
 }

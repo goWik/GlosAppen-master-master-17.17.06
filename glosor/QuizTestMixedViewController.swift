@@ -6,15 +6,15 @@
 //  Copyright © 2016 malgorzata wikström. All rights reserved.
 
 // KÄLLOR:
-// http://www.appcoda.com/view-animation-in-swift/ animationer
-// https://www.hackingwithswift.com/example-code/uikit/how-to-adjust-a-uiscrollview-to-fit-the-keyboard keyboard och notifiaktions
+// http://www.appcoda.com/view-animation-in-swift/  animationer som jag modifierat och anpassat till min app
+// https://www.hackingwithswift.com/example-code/uikit/how-to-adjust-a-uiscrollview-to-fit-the-keyboard keyboard och notifications
 
 import UIKit
 
 class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-
-    //:MARK ELEMENTS
+    
+    //MARK: ELEMENTS
     @IBOutlet weak var ButtonShowAnswerOutlet: UIButton!
     
     @IBOutlet weak var ButtonRedoOutlet: UIButton!
@@ -22,7 +22,7 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var TableView: UITableView!
     
     @IBOutlet weak var VCName: UINavigationItem!
- 
+    
     
     var delegerare:SelectQuizTypeViewController?
     
@@ -32,16 +32,16 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
     
     var helperStruct:HelperStruct = HelperStruct()
     
-    var myFormatedClassElements:MyFormatedClassElements = MyFormatedClassElements()
+    var myformattedClassElements:MyformattedClassElements = MyformattedClassElements()
     
     var settingsAppLanguageUppdate:String?
     
     var soundSettigsApp:Bool?
     
- 
     
- 
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpSettingsAppLanguage()
@@ -54,21 +54,21 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         //kör func här, notificationCenter lägger till Observer och samtidigt körs adjustForKeyboard med namn: WILLCHANGE
         notificationCenter.addObserver(self, selector: #selector(QuizTest21ViewController.adjustForKeyboard(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
         
-        self.myFormatedClassElements.formated_ButtonSelectQuizButton(ButtonShowAnswerOutlet)
-        self.myFormatedClassElements.formated_ButtonSelectQuizButton(ButtonRedoOutlet)
-    
+        self.myformattedClassElements.formatted_ButtonSelectQuizButton(ButtonShowAnswerOutlet)
+        self.myformattedClassElements.formatted_ButtonSelectQuizButton(ButtonRedoOutlet)
+        
         TableView.delegate = self
         
     }
-
     
-     override func didReceiveMemoryWarning() {
+    
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-      }
+    }
     
     
     
-    //:MARK PROTOKOLLS FUNCKTIONS:
+    //MARK: PROTOCOLS FUNCTIONS
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (AllaGlosListorArray?.glosListorArray.count)!
     }
@@ -78,7 +78,7 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         return 1
     }
     
-    //:MARK CUSTOM CELL
+    //MARK: CUSTOM CELL
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = TableView.dequeueReusableCellWithIdentifier("CellQuizTypeMixed", forIndexPath: indexPath) as! CustomCellQuizTestMixedTableViewCell
@@ -92,16 +92,16 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         
-       //vilkor för blandat:
-       for var i = 0; i <= AllaGlosListorArray?.glosListorArray.count; i += 1 {
-    
-        switch  Int(arc4random_uniform(UInt32(AllaGlosListorArray!.glosListorArray.count))) {
-                case 0 :
-                    cell.WordToTranslate.text =  String(AllaGlosListorArray!.glosListorArray[indexPath.row].word1)
-                case 1 :
-                    cell.WordToTranslate.text =  String(AllaGlosListorArray!.glosListorArray[indexPath.row].word2)
-                default:
-                    print("defoult")
+        //villkor för blandat:
+        for var i = 0; i <= AllaGlosListorArray?.glosListorArray.count; i += 1 {
+            
+            switch  Int(arc4random_uniform(UInt32(AllaGlosListorArray!.glosListorArray.count))) {
+            case 0 :
+                cell.WordToTranslate.text =  String(AllaGlosListorArray!.glosListorArray[indexPath.row].word1)
+            case 1 :
+                cell.WordToTranslate.text =  String(AllaGlosListorArray!.glosListorArray[indexPath.row].word2)
+            default:
+                print("defoult")
             }
         }
         
@@ -111,10 +111,10 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         if settingsAppLanguageUppdate == "English" {
             cell.TheTranslatedWord.placeholder = "your answer"
         }
-
+        
         ButtonShowAnswerOutlet.addTarget(self, action: #selector(QuizTestMixedViewController.ButtonShowAnswer(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
-
+        
         return cell
     }
     
@@ -122,52 +122,52 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
     
     //MARK: SET UP SETTINGS APPLanguage
     func setUpSettingsAppLanguage(){
-            if settingsAppLanguageUppdate == "Svenska" || settingsAppLanguageUppdate == nil { 
-                title = "blandat"
-                ButtonShowAnswerOutlet.setTitle("rätta", forState: .Normal)
-                ButtonRedoOutlet.setTitle("gör om", forState: .Normal)
-            }
-            if settingsAppLanguageUppdate == "English"{
-                title = "mixed"
-                ButtonShowAnswerOutlet.setTitle("correct", forState: .Normal)
-                ButtonRedoOutlet.setTitle("redo", forState: .Normal)
-            }
+        if settingsAppLanguageUppdate == "Svenska" || settingsAppLanguageUppdate == nil {
+            title = "blandat"
+            ButtonShowAnswerOutlet.setTitle("rätta", forState: .Normal)
+            ButtonRedoOutlet.setTitle("gör om", forState: .Normal)
+        }
+        if settingsAppLanguageUppdate == "English"{
+            title = "mixed"
+            ButtonShowAnswerOutlet.setTitle("correct", forState: .Normal)
+            ButtonRedoOutlet.setTitle("redo", forState: .Normal)
+        }
     }
-
     
     
     
-    //:MARK ANIMATIONS:
+    
+    //MARK: ANIMATIONS
     override func viewWillAppear(animated: Bool) {
         animateTable()
     }
     
-    func animateTable() { //animerar celler:
+    func animateTable() {
         TableView.reloadData()
         
-        _ = TableView.visibleCells //deklarerar en myCell typen UITableViewCell på existerande rowen
-        let screenHeight:CGFloat = TableView.bounds.size.height //anger mått för hight tabel
+        _ = TableView.visibleCells
+        let screenHeight:CGFloat = TableView.bounds.size.height
         
-        for myCell in cells { //loppar igenom cells Arraygen
+        for myCell in cells {
             let myCell:UITableViewCell = myCell as UITableViewCell
-            myCell.transform = CGAffineTransformMakeTranslation(0, screenHeight)//så hög är skärmen
+            myCell.transform = CGAffineTransformMakeTranslation(0, screenHeight)
         }
         for myCell in cells {
             let mycell: UITableViewCell = myCell as UITableViewCell
             
-           if soundSettigsApp == true || soundSettigsApp == nil {
-                self.helperStruct.playAudio() //ljudet spelas upp samtigit som animationene körs
+            if soundSettigsApp == true || soundSettigsApp == nil {
+                self.helperStruct.playAudio()
             }
-
+            
             UIView.animateWithDuration(0.8, delay:0.03, usingSpringWithDamping: 1, initialSpringVelocity: 0,
                                        options: .LayoutSubviews, animations: {
                                         mycell.transform = CGAffineTransformMakeTranslation(0, 0);
-            }, completion: nil)
+                }, completion: nil)
         }
     }
     
     
-    //:MARK NAVIGATIONS:
+    //MARK: NAVIGATIONS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "ShowSynonym" {
@@ -180,25 +180,26 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     
-
-    //MARK: ACTIONS:
+    
+    //MARK: ACTIONS
     func ButtonShowAnswer(sender:UIButton) {
         var i = 0
         for cell in cells {
-            
+            cell.TheTranslatedWord.textColor = UIColor.blackColor()
             cell.TheTranslatedWord.text! = cell.TheTranslatedWord.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
-            //vilkor till rätta:
             if AllaGlosListorArray!.glosListorArray[i].word1.caseInsensitiveCompare(cell.TheTranslatedWord.text!) == .OrderedSame ||  AllaGlosListorArray!.glosListorArray[i].word2.caseInsensitiveCompare(cell.TheTranslatedWord.text!) == .OrderedSame {
                 cell.ImageToShowResults.hidden = false
+                cell.TheTranslatedWord.textColor = UIColor.blackColor()
             } else {
                 cell.ImageToShowResults.hidden = true
+                cell.TheTranslatedWord.textColor = UIColor.redColor()
             }
             i+=1
         }
     }
     
-
+    
     @IBAction func ButtonRedoAction(sender: UIButton) {
         for cell in cells {
             cell.TheTranslatedWord.text! = ""
@@ -212,17 +213,17 @@ class QuizTestMixedViewController: UIViewController, UITableViewDataSource, UITa
         
         let userInfo = notification.userInfo!
         
-        let keyboardScreenFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue() //format för screnFrame
-        let keyboardViewFrame = view.convertRect(keyboardScreenFrame, fromView: view.window)//och viewFrame
+        let keyboardScreenFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let keyboardViewFrame = view.convertRect(keyboardScreenFrame, fromView: view.window)
         
-        if notification.name == UIKeyboardWillHideNotification { //om notifaktions.NAME  är Hide
+        if notification.name == UIKeyboardWillHideNotification {
             TableView.contentInset = UIEdgeInsetsZero
-        } else { //keybord height
-            TableView .contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewFrame.height, right: 0) //from bottom dess hight
+        } else {
+            TableView .contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewFrame.height, right: 0)
         }
         TableView.scrollIndicatorInsets = TableView.contentInset
     }
     
-   
-
+    
+    
 }

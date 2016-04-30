@@ -10,7 +10,7 @@ import UIKit
 
 class LoadingViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
-    //:MARK ELEMENTS
+    //MARK: ELEMENTS
     @IBOutlet var tableView: UIView!
     
     @IBOutlet weak var ImageToAnimation: UIImageView!
@@ -18,7 +18,6 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
     @IBOutlet weak var NavBarItemOutlet: UIBarButtonItem!
     
     
- 
     var delegateSettingsViewController:SettingsViewController?
     
     var delegateAboutViewController:AboutViewController?
@@ -42,26 +41,24 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
     
     
     
-    //MARK: MY FUNKTION
-    //func skickar paramterar: språk och ljud
+    //MARK: MY FUNCTION
+    //func skickar parametrar: språk och ljud
     func changeLanguage(settingsAppLanguage:String, soundSettigs:Bool){
         settingsAppLanguageUppdate = settingsAppLanguage
         soundSettigsApp = soundSettigs
     }
     
     
-   //MARK: ANIMATE IMAGE
-   override func viewWillAppear(animated: Bool) {
-        ImageToAnimation.center.y -= view.bounds.width//neråt
-    }
-    
+    //MARK: ANIMATE IMAGE
     override func viewDidAppear(animated: Bool) {
         UIView.animateWithDuration(2.3, animations: {
-            self.ImageToAnimation.center.y += self.view.bounds.width
+            //placering av bilden:  center.y  "mitten" av axeln y,
+            //hur animeras? neråt += och animationen stannar vid view mitten på axel y
+            self.ImageToAnimation.center.y += self.view.center.y
         })
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -82,16 +79,15 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
     }
     
     
-   
-    //MARK: ACTIONS:
     
+    //MARK: NAVIGATIONS:
     @IBAction func SwipeGR(sender: UISwipeGestureRecognizer) {
-         performSegueWithIdentifier("GoTo", sender: settingsAppLanguageUppdate)
+        performSegueWithIdentifier("GoTo", sender: settingsAppLanguageUppdate)
     }
     
     @IBAction func ButtonShowInfo(sender: UIBarButtonItem) {
-    
-    let VC = storyboard?.instantiateViewControllerWithIdentifier("ShowInfo") as! AboutViewController
+        
+        let VC = storyboard?.instantiateViewControllerWithIdentifier("ShowInfo") as! AboutViewController
         VC.settingsAppLanguageUppdate = settingsAppLanguageUppdate
         
         //Formaterar my custom popover
@@ -104,9 +100,9 @@ class LoadingViewController: UIViewController, UIPopoverPresentationControllerDe
         popover?.delegate = self
         popover?.barButtonItem = sender as UIBarButtonItem
         self.presentViewController(navController, animated: true, completion: nil)
- 
+        
     }
-
+    
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .None

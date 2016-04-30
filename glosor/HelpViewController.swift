@@ -12,7 +12,7 @@ import UIKit
 class HelpViewController: UIViewController {
     
     
-    //:MARK ELEMENTS
+    //MARK: ELEMENTS
     @IBOutlet weak var TextView: UITextView!
     
     @IBOutlet weak var ImageView: UIImageView!
@@ -37,7 +37,7 @@ class HelpViewController: UIViewController {
             TextView.text = "In this Glosapp you can create a vocabulary lists by choosing the alternative Create. A vocabulary list is composed of two languages ​​and an unlimited number of words. You can edit your vocabulary lists by deleting, adding or changing your words. After you have created a vocabulary list and pressing DONE you will be forwarded to your vocabulary lists. From there, you can remove the existing lists or share them: send as SMS / email, add to notes or use other apps that are available on your device. PRACTICE METHODS: To choose between different practice methods, you press on the list you want to practice on. Once you select one of the practice methods, enter the translated word in the empty box. When you feel ready, you will find two buttons at the bottom: REDO and CORRECT. the CORRECT button corrects your answers. If the translated word matches the word you have translated, you will see a green check mark. No green checkmark means that you can try again. The REDO button allows you to test your skills again and again. If you would like to see synonyms of the word to be translated, you can tap the word itself or the small gray arrow located on the right side of the box. From there you will be redirected to a Web page where you can see the synonyms for the word to be translated."
         }
     }
-  
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

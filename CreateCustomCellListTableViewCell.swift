@@ -11,7 +11,7 @@ import UIKit
 class CreateCustomCellListTableViewCell: UITableViewCell {
     
     
-    //:MARK ELEMENTS
+    //MARK: ELEMENTS
     @IBOutlet weak var LabelLanguage1: UILabel!
     
     @IBOutlet weak var LabelWord1: UILabel!
@@ -33,5 +33,5 @@ class CreateCustomCellListTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
 }
