@@ -117,14 +117,14 @@ class EditListViewController: UIViewController , UITableViewDataSource, UITableV
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CellEditList", forIndexPath: indexPath) as! CustomCellEditListTableViewCell
         
-        //sättter gammalt data i cellen
+        //gammalt data i cellen
         cell.LabelLanguage1.text  = AllaGlosListorArray!.language1
         cell.LabelLanguage2.text = AllaGlosListorArray!.language2
         
         cell.LabelLanguage1.text = TextFieldLanguage1.text
         cell.LabelLanguage2.text = TextFieldLanguage2.text
         
-        //sätt till språken oberånde om de ändras eler ej
+        //sätt till språken oberoende om de ändras eler ej
         //dynamiska word1, word2
         cell.TextFieldWord1.text = AllaGlosListorArray!.glosListorArray[indexPath.row].word1
         cell.TextFieldWord2.text = AllaGlosListorArray!.glosListorArray[indexPath.row].word2

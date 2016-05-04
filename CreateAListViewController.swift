@@ -114,7 +114,7 @@ class CreateAListViewController: UIViewController, UITableViewDataSource, UITabl
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CellList", forIndexPath: indexPath) as! CreateCustomCellListTableViewCell
         
-        //till statiska elements: språk
+        //statiska element: språk
         cell.LabelLanguage1.text = "\(TextFieldLanguage1.text!)"
         cell.LabelLanguage2.text = "\(TextFieldLabelLanguage2.text!)"
         
